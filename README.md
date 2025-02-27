@@ -1,3 +1,5 @@
+# Projeto Aedes 3
+
 Ola! Aqui esta o trabalho da materia de aedes 3, onde eu utilizo e manipulo uma base de dados atraves da manipulaçao de binarios!
 Link para base original : https://www.kaggle.com/datasets/artermiloff/steam-games-dataset/data
 
