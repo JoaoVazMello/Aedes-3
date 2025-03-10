@@ -1,5 +1,8 @@
 package codigojava;
+
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -31,7 +34,7 @@ public class Main {
       // Leitura do valor
       System.out.print("Digite a opçao que deseja: ");
       opcao = leitor.nextInt();
-
+      leitor.nextLine();
       // Processamento da opçao selecionada
       switch (opcao) {
         // Opçao 0 = Carregamento da base de dados;
@@ -44,15 +47,63 @@ public class Main {
           LeitorCSV leitorCSV = new LeitorCSV(nomeBase);
           ArrayList<Game> ListaDeGames = leitorCSV.LerCsv();
 
-          //Chamar o objeto Crud para realizar a operaçao de escrever o binario
+          // Chamar o objeto Crud para realizar a operaçao de escrever o binario
           crud.EscreverBinario(ListaDeGames);
           break;
-        
+
         // Opçao 1 = Criar novo Registro
         case 1:
-          System.out.println("create");
+          System.out.println("Criar novo jogo");
+
+          Crud crud1 = new Crud();
+          int id = crud1.PegarUltimoId() + 1;
+
+          System.out.print("Digite o nome do jogo: ");
+          String name = leitor.nextLine();
+
+          System.out.print("Digite o preço do jogo: ");
+          double price = leitor.nextDouble();
+
+          leitor.nextLine();
+
+          System.out.print("Digite a descrição do jogo: ");
+          String description = leitor.nextLine();
+
+          System.out.print("Digite a idade mínima do jogo: ");
+          int required = leitor.nextInt();
+          leitor.nextLine();
+
+          System.out.print("Digite o dia do lançamento (dd): ");
+          int day = leitor.nextInt();
+          leitor.nextLine();
+
+          System.out.print("Digite o mês do lançamento (mm): ");
+          int month = leitor.nextInt();
+          leitor.nextLine();
+
+          System.out.print("Digite o ano do lançamento (yyyy): ");
+          int year = leitor.nextInt();
+          leitor.nextLine();
+
+          // Cria a data de lançamento
+          LocalDate release = LocalDate.of(year, month, day);
+
+          ArrayList<String> generes = new ArrayList<>();
+          System.out.print("Digite os gêneros do jogo separados por vírgula (ex: Ação, Aventura): ");
+          String generesInput = leitor.nextLine();
+          String[] generesArray = generesInput.split(",");
+          for (String genre : generesArray) {
+            generes.add(genre.trim());
+          }
+
+          // Cria o objeto Game com os dados recebidos
+          Game game = new Game(id, name, release, required, price, description, generes);
+
+          // Chama o método para escrever o novo jogo no banco de dados (exemplo)
+          crud1.EscreverNovoGame(game);
+          System.out.println("Jogo criado com sucesso");
           break;
-        
+
         // Opçao 2 = Ler um registro
         case 2:
           System.out.println("Read");
@@ -63,7 +114,7 @@ public class Main {
           System.out.println("Update");
           break;
 
-        // Opçao 4 = Apagar um registro 
+        // Opçao 4 = Apagar um registro
         case 4:
           System.err.println("Delete");
           break;
@@ -85,9 +136,8 @@ public class Main {
           break;
       }
     }
-    //fecha o leitor antes de terminar o programa
+    // fecha o leitor antes de terminar o programa
     leitor.close();
   }
-
 
 }
