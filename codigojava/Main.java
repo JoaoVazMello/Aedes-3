@@ -13,7 +13,6 @@ public class Main {
     Scanner leitor = new Scanner(System.in);
 
     // Inicializar o CRUD;
-    Crud crud = new Crud();
 
     String nomeBase;
     int opcao = 0;
@@ -39,6 +38,8 @@ public class Main {
       switch (opcao) {
         // Opçao 0 = Carregamento da base de dados;
         case 0:
+          Crud crud = new Crud();
+
           // Coleta o nome da base de dados
           System.out.print("Digite o nome da base de dados: ");
           nomeBase = leitor.next();
@@ -106,7 +107,18 @@ public class Main {
 
         // Opçao 2 = Ler um registro
         case 2:
-          System.out.println("Read");
+          Crud crud2 = new Crud();
+
+          System.out.println("Digite o id do jogo procurado");
+          int idGame = leitor.nextInt();
+          leitor.nextLine();
+
+          var gameResult = crud2.LerGame(idGame);
+
+          if (gameResult != null)
+          System.out.println(gameResult);
+          else System.out.println("Game com ID " + idGame + " não encontrado.");
+
           break;
 
         // Opçao 3 = Atualizar um registro

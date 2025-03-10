@@ -18,6 +18,7 @@ public class Game {
     this.Price = Price;
     this.Description = Description;
     this.Genres = Genres;
+    this.Required = Required;
   }
 
   public void MostraAtributos(Game objetoGame){
@@ -37,29 +38,41 @@ public class Game {
   }
 
   // Funçao para pegar o tamanho em Bytes do Registro
-  public int getByte(Game objGame){
-
+  public int getByte(Game objGame) {
     int tamanho_Bytes = 0;
 
     try {
-                      // AppID        // Name                                          // Data                                                        // Required     // PRICE   
-      tamanho_Bytes = Integer.BYTES + getName().getBytes("UTF-8").length + getRelease().toString().getBytes("UTF-8").length + Integer.BYTES + Double.BYTES + 
-      // Description
-      getDescription().getBytes("UTF-8").length;
+      // Nome (String + 2 bytes extras do writeUTF)
+      tamanho_Bytes += objGame.getName().getBytes("UTF-8").length + 2;
 
-      // Percorre a lista para somar a quantidade de bytes
-      for(String generes : getGenres()){
-        tamanho_Bytes = tamanho_Bytes + generes.getBytes("UTF-8").length;
+      // Data de lançamento (long = 8 bytes)
+      tamanho_Bytes += Long.BYTES;
+
+      // Required age (int = 4 bytes)
+      tamanho_Bytes += Integer.BYTES;
+
+      // Preço (double = 8 bytes)
+      tamanho_Bytes += Double.BYTES;
+
+      // Descrição (máximo de 250 caracteres + 2 bytes extras)
+      String descricao = objGame.getDescription();
+      int tamanhoDescricao = Math.min(descricao.length(), 250); // Limita a 250 chars
+      tamanho_Bytes += descricao.substring(0, tamanhoDescricao).getBytes("UTF-8").length + 2;
+
+      // Lista de gêneros (cada String + 2 bytes extras)
+      for (String genero : objGame.getGenres()) {
+        tamanho_Bytes += genero.getBytes("UTF-8").length + 2;
       }
-      
+
     } catch (Exception e) {
-      // TODO: handle exception
-      System.out.println("Nao foi possivel calcular o tamanho");
+      System.out.println("Não foi possível calcular o tamanho");
       e.printStackTrace();
     }
 
-    return tamanho_Bytes;
+    return tamanho_Bytes; // Este valor será salvo no campo "tamanhoRegistro"
   }
+
+
 
   public int getAppID() {
     return AppID;
@@ -115,5 +128,18 @@ public class Game {
 
   public void setGenres(ArrayList<String> genres) {
     Genres = genres;
+  }
+
+  @Override
+  public String toString() {
+    return "Game{ " +
+            "AppID=" + AppID +
+            ", Name='" + Name + '\'' +
+            ", Release=" + Release +
+            ", Required=" + Required +
+            ", Price=" + Price +
+            ", Description='" + Description + '\'' +
+            ", Genres=" + Genres +
+            '}';
   }
 }

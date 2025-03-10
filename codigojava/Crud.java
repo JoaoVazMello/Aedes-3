@@ -1,7 +1,5 @@
 package codigojava;
 
-import java.io.DataOutputStream;
-import java.io.FileOutputStream;
 import java.io.RandomAccessFile;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
@@ -17,146 +15,113 @@ public class Crud {
 
   // Funçao que vai escrever no Binario
   public void EscreverBinario(ArrayList<Game> objGame) {
-
     try {
-      DataOutputStream dos = new DataOutputStream(new FileOutputStream("Dados.bd"));
+      // Abrir arquivo para escrita
+      RandomAccessFile arquivo = new RandomAccessFile("Dados.bd", "rw");
 
-      // Objeto para acessar arquivo
-      RandomAccessFile Acesso = new RandomAccessFile("Dados.bd", "rw");
+      // inicia o arquivo com o ultimo id
+      arquivo.writeInt(0);
 
-      // Ultimo Id inserid
-
-      // Insere o ID do primeiro no cabeçalho (Posso fazer isso perguntar hayala)
-      dos.writeInt(ultimoID);
+      // Posicionar o ponteiro no final do arquivo
+      arquivo.seek(arquivo.length());
 
       for (Game game : objGame) {
+        // Incrementa o último ID e atribui ao jogo
         ultimoID++;
-
-        // Salve o ID que esta sendo inserido agora
         game.setAppID(ultimoID);
 
         // Escreve o ID do game
-        dos.writeInt(game.getAppID());
+        arquivo.writeInt(game.getAppID());
 
-        //lapide do dado
-        // true indica que ele é válido/acessível
-        dos.writeBoolean(true);
+        // Lápide, boolean pois ele é um bit
+        arquivo.writeBoolean(true);
 
-        // Escreve o tamanho do Registro em bytes
-        int QuantidadeDeBytesRegistro = game.getByte(game);
-        dos.writeInt(QuantidadeDeBytesRegistro);
+        // Calcular tamanho do registro
+        int tamanhoRegistro = game.getByte(game);
+        arquivo.writeInt(tamanhoRegistro);
 
-        // Escreve o Nome do Game
-        dos.writeUTF(game.getName());
-
-        // Escreve a data de lançamento(Conferir com o hayala)
+        // Escreve os dados do jogo
+        arquivo.writeUTF(game.getName());
         long data = ChronoUnit.DAYS.between(LocalDate.of(1970, 1, 1), game.getRelease());
-        dos.writeLong(data);
+        arquivo.writeLong(data);
+        arquivo.writeInt(game.getRequired());
+        arquivo.writeDouble(game.getPrice());
 
-        // Escreve a idade para jogar o Game
-        dos.writeInt(game.getRequired());
+        // Escreve a descrição (limite de 250 caracteres)
+        String descricao = game.getDescription().length() > 250
+            ? game.getDescription().substring(0, 250)
+            : game.getDescription();
+        arquivo.writeUTF(descricao);
 
-        // Escreve o Preço do game
-        dos.writeDouble(game.getPrice());
-
-        // Cria o objeto SB para utilizar dps
-        StringBuilder sb = new StringBuilder(game.getDescription());
-
-        // Teste se a string tem mais de 250 caracteres se possuir apaga todos para
-        // frente
-        if (sb.length() > 250) {
-          sb.delete(251, sb.length());
+        // Escreve os gêneros
+        for (String genero : game.getGenres()) {
+          arquivo.writeUTF(genero);
         }
-
-        // Escreve a descriçao
-        dos.writeUTF(sb.toString());
-
-        // Escreve a lista de Generos dos jogos
-        for (String generes : game.getGenres()) {
-          dos.writeUTF(generes);
-        }
-
-        // Acessa a posiçao 0 do Arquivo
-        Acesso.seek(0);
-
-        // Atualiza o UltimoId
-        Acesso.writeInt(ultimoID);
-
-        System.out.println("Último id inserido" + ultimoID);
-
-        // Volta o ponteiro para o final do arquivo
-        Acesso.seek(Acesso.length());
       }
 
-      Acesso.close();
-      dos.close();
+      // Atualizar o ultimoID na posição 0
+      arquivo.seek(0);
+      arquivo.writeInt(ultimoID);
 
+      // Fechar o arquivo
+      arquivo.close();
+
+      System.out.println("Banco atualizado. Último ID inserido: " + ultimoID);
     } catch (Exception e) {
-      // TODO: handle exception
-      System.out.println("Nao foi possivel Criar o Banco");
+      System.out.println("Não foi possível criar o banco.");
       e.printStackTrace();
     }
   }
 
   public void EscreverNovoGame(Game game) {
     try {
-      RandomAccessFile Acesso = new RandomAccessFile("Dados.bd", "rw");
-      Acesso.seek(Acesso.length());
+      // definindo o ultimo id
+      ultimoID =  game.getAppID();
 
-      ultimoID = game.getAppID();
+      // Abrir arquivo para escrita
+      RandomAccessFile arquivo = new RandomAccessFile("Dados.bd", "rw");
+
+      // Posicionar o ponteiro no final do arquivo
+      arquivo.seek(arquivo.length());
 
       // Escreve o ID do game
-      Acesso.writeInt(game.getAppID());
+      arquivo.writeInt(game.getAppID());
 
-      //lapide do dado
-      // true indica que ele é válido/acessível
-      Acesso.writeBoolean(true);
+      // Lápide, boolean pois ele é um bit
+      arquivo.writeBoolean(true);
 
-      // Escreve o tamanho do Registro em bytes
-      int QuantidadeDeBytesRegistro = game.getByte(game);
-      Acesso.writeInt(QuantidadeDeBytesRegistro);
+      // Calcular tamanho do registro
+      int tamanhoRegistro = game.getByte(game);
+      arquivo.writeInt(tamanhoRegistro);
 
-      // Escreve o Nome do Game
-      Acesso.writeUTF(game.getName());
-
-      // Escreve a data de lançamento(Conferir com o hayala)
+      // Escreve os dados do jogo
+      arquivo.writeUTF(game.getName());
       long data = ChronoUnit.DAYS.between(LocalDate.of(1970, 1, 1), game.getRelease());
-      Acesso.writeLong(data);
+      arquivo.writeLong(data);
+      arquivo.writeInt(game.getRequired());
+      arquivo.writeDouble(game.getPrice());
 
-      // Escreve a idade para jogar o Game
-      Acesso.writeInt(game.getRequired());
+      // Escreve a descrição (limite de 250 caracteres)
+      String descricao = game.getDescription().length() > 250
+          ? game.getDescription().substring(0, 250)
+          : game.getDescription();
+      arquivo.writeUTF(descricao);
 
-      // Escreve o Preço do game
-      Acesso.writeDouble(game.getPrice());
-
-      // Cria o objeto SB para utilizar dps
-      StringBuilder sb = new StringBuilder(game.getDescription());
-
-      // Teste se a string tem mais de 250 caracteres se possuir apaga todos para
-      // frente
-      if (sb.length() > 250) {
-        sb.delete(251, sb.length());
+      // Escreve os gêneros
+      for (String genero : game.getGenres()) {
+        arquivo.writeUTF(genero);
       }
 
-      // Escreve a descriçao
-      Acesso.writeUTF(sb.toString());
+      // Atualizar o ultimoID na posição 0
+      arquivo.seek(0);
+      arquivo.writeInt(ultimoID);
 
-      // Escreve a lista de Generos dos jogos
-      for (String generes : game.getGenres()) {
-        Acesso.writeUTF(generes);
-      }
+      // Fechar o arquivo
+      arquivo.close();
 
-      // Acessa a posiçao 0 do Arquivo
-      Acesso.seek(0);
-
-      // Atualiza o UltimoId
-      Acesso.writeInt(ultimoID);
-
-      Acesso.close();
-
+      System.out.println("Banco atualizado. Último ID inserido: " + ultimoID);
     } catch (Exception e) {
-      // TODO: handle exception
-      System.out.println("Nao foi adicionar novo Game " + game);
+      System.out.println("Não foi possível criar o banco.");
       e.printStackTrace();
     }
   }
@@ -175,4 +140,55 @@ public class Crud {
 
     return id;
   }
+
+  public Game LerGame(int appID) {
+    try {
+      RandomAccessFile Acesso = new RandomAccessFile("Dados.bd", "r");
+      Acesso.seek(4); // Pula o primeiro inteiro (ultimoID)
+
+      while (Acesso.getFilePointer() < Acesso.length()) {
+        int id = Acesso.readInt(); // Lê o ID do game
+        boolean valido = Acesso.readBoolean(); // Lê a lápide
+        int tamanhoRegistro = Acesso.readInt(); // Lê o tamanho do registro
+
+        if (id == appID && valido) {
+          // Se for o ID buscado e o registro for válido, lê os dados do game
+          String name = Acesso.readUTF();
+          long releaseDays = Acesso.readLong();
+          LocalDate releaseDate = LocalDate.of(1970, 1, 1).plusDays(releaseDays);
+          int requiredAge = Acesso.readInt();
+          double price = Acesso.readDouble();
+          String description = Acesso.readUTF();
+
+          // Lê os gêneros
+          ArrayList<String> genres = new ArrayList<>();
+          int bytesLidos = 4 + 1 + 4; // ID (4) + lápide (1) + tamanhoRegistro (4)
+
+          bytesLidos += name.getBytes("UTF-8").length + 2; // Nome (UTF)
+          bytesLidos += 8; // Data de lançamento (long)
+          bytesLidos += 4; // Required age (int)
+          bytesLidos += 8; // Preço (double)
+          bytesLidos += description.getBytes("UTF-8").length + 2; // Descrição (UTF)
+
+          while (bytesLidos < tamanhoRegistro + 4) { // +4 por causa do próprio campo tamanhoRegistro
+            String genre = Acesso.readUTF();
+            genres.add(genre);
+            bytesLidos += genre.getBytes("UTF-8").length + 2; // Cada string + 2 bytes extras do UTF
+          }
+
+          Acesso.close();
+          return new Game(id, name, releaseDate, requiredAge, price, description, genres);
+        } else {
+          Acesso.skipBytes(tamanhoRegistro); // Pula o registro inteiro
+        }
+      }
+
+      Acesso.close();
+    } catch (Exception e) {
+      System.out.println("Erro ao ler o game do arquivo.");
+      e.printStackTrace();
+    }
+    return null;
+  }
+
 }

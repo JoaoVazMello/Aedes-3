@@ -80,7 +80,7 @@ public class LeitorCSV {
 
       // Loop para percorrer todas as linhas do arquivo , contador para diminuir a
       // quantidade de testes;
-      while ((linha = buffer.readLine()) != null && contador < 100) {
+      while ((linha = buffer.readLine()) != null && contador < 5) {
 
         // Funçao que vai splitar a linha
         String[] lista = Splitador(linha);
