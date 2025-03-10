@@ -22,6 +22,9 @@ for coluna in df.columns:
   if coluna not in colunas_necessarias:
     df = df.drop(coluna, axis = 1)
 
+# Remove ";" do meio da base de dados caso aconteça
+df["name"] = df["name"].str.replace(";", "", regex=False)
+
 # Salva a nova base de dados sem index
 # Caso queira que ela crie um index altomatico basta trocar o index = False para index = True 
 df.to_csv("BaseDeDados.csv", index = False, sep = ";", encoding = "utf-8")
