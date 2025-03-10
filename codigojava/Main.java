@@ -56,8 +56,8 @@ public class Main {
         case 1:
           System.out.println("Criar novo jogo");
 
-          Crud crud1 = new Crud();
-          int id = crud1.PegarUltimoId() + 1;
+          Crud crudCriarNovoJogo = new Crud();
+          int id = crudCriarNovoJogo.PegarUltimoId() + 1;
 
           System.out.print("Digite o nome do jogo: ");
           String name = leitor.nextLine();
@@ -100,20 +100,20 @@ public class Main {
           // Cria o objeto Game com os dados recebidos
           Game game = new Game(id, name, release, required, price, description, generes);
 
-          // Chama o método para escrever o novo jogo no banco de dados (exemplo)
-          crud1.EscreverNovoGame(game);
+          // Chama o método para escrever o novo game no banco de dados (exemplo)
+          crudCriarNovoJogo.EscreverNovoGame(game);
           System.out.println("Jogo criado com sucesso");
           break;
 
         // Opçao 2 = Ler um registro
         case 2:
-          Crud crud2 = new Crud();
+          Crud crudLerRegistroPorId = new Crud();
 
           System.out.println("Digite o id do jogo procurado");
           int idGame = leitor.nextInt();
           leitor.nextLine();
 
-          var gameResult = crud2.LerGame(idGame);
+          var gameResult = crudLerRegistroPorId.LerGame(idGame);
 
           if (gameResult != null)
           System.out.println(gameResult);
@@ -128,10 +128,16 @@ public class Main {
 
         // Opçao 4 = Apagar um registro
         case 4:
-          System.err.println("Delete");
+          Crud deletarGame = new Crud();
+          System.out.println("Digite o id do jogo a ser deletado");
+          int idDelete = leitor.nextInt();
+          leitor.nextLine();
+          var resultado = deletarGame.ApagarGame(idDelete);
+          if(resultado) System.out.println("Game com ID " + idDelete + " deletado com sucesso.");
+          else System.out.println("Game com ID " + idDelete + " não encontrado.");
           break;
 
-        // Opçao 5 = Apagar um registro
+        // Opçao 5 = Sair do sistema
         case 5:
           System.out.println("\n");
           System.out.println("=====================================");

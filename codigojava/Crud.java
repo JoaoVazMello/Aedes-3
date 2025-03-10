@@ -191,4 +191,33 @@ public class Crud {
     return null;
   }
 
+  public boolean ApagarGame(int appID) {
+    try {
+      RandomAccessFile Acesso = new RandomAccessFile("Dados.bd", "rw");
+      Acesso.seek(4); // Pula o primeiro inteiro (ultimoID)
+
+      while (Acesso.getFilePointer() < Acesso.length()) {
+        int id = Acesso.readInt(); // Lê o ID do game
+        boolean valido = Acesso.readBoolean(); // Lê a lápide
+
+        if (id == appID && valido) {
+          Acesso.seek(Acesso.getFilePointer() - 1); // Volta para a lápide
+          Acesso.writeBoolean(false); // O game não é mais valido, lápide se torna false
+          Acesso.close();
+          return true;
+        } else {
+          int tamanhoRegistro = Acesso.readInt(); // Lê o tamanho do registro
+          Acesso.skipBytes(tamanhoRegistro); // Pula o registro inteiro
+        }
+      }
+
+      Acesso.close(); // Fecha o arquivo ao final
+    } catch (Exception e) {
+      System.out.println("Erro ao ler o game do arquivo.");
+      e.printStackTrace();
+    }
+    return false;
+  }
+
+
 }
