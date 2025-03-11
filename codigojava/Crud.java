@@ -73,10 +73,10 @@ public class Crud {
     }
   }
 
-  public void EscreverNovoGame(Game game) {
+  public void EscreverNovoGame(Game game, boolean atualizar) {
     try {
       // definindo o ultimo id
-      ultimoID =  game.getAppID();
+      ultimoID = game.getAppID();
 
       // Abrir arquivo para escrita
       RandomAccessFile arquivo = new RandomAccessFile("Dados.bd", "rw");
@@ -87,7 +87,7 @@ public class Crud {
       // Escreve o ID do game
       arquivo.writeInt(game.getAppID());
 
-      // Lápide, boolean pois ele é um bit
+      // Lápide, boolean pois ela é um bit
       arquivo.writeBoolean(true);
 
       // Calcular tamanho do registro
@@ -113,8 +113,11 @@ public class Crud {
       }
 
       // Atualizar o ultimoID na posição 0
-      arquivo.seek(0);
-      arquivo.writeInt(ultimoID);
+      // caso não seja atualização
+      if(!atualizar) {
+        arquivo.seek(0);
+        arquivo.writeInt(ultimoID);
+      }
 
       // Fechar o arquivo
       arquivo.close();
@@ -126,6 +129,9 @@ public class Crud {
     }
   }
 
+  public void AtualizarGame(Game game) {
+
+  }
   public int PegarUltimoId() {
     int id = 0;
     try {
@@ -194,7 +200,7 @@ public class Crud {
   public boolean ApagarGame(int appID) {
     try {
       RandomAccessFile Acesso = new RandomAccessFile("Dados.bd", "rw");
-      Acesso.seek(4); // Pula o primeiro inteiro (ultimoID)
+      Acesso.seek(4); // Pula o ultimoID
 
       while (Acesso.getFilePointer() < Acesso.length()) {
         int id = Acesso.readInt(); // Lê o ID do game
@@ -211,13 +217,12 @@ public class Crud {
         }
       }
 
-      Acesso.close(); // Fecha o arquivo ao final
+      Acesso.close();
     } catch (Exception e) {
       System.out.println("Erro ao ler o game do arquivo.");
       e.printStackTrace();
     }
     return false;
   }
-
 
 }

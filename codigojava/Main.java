@@ -9,10 +9,7 @@ public class Main {
 
   public static void main(String[] args) {
 
-    // Objeto para fazer as leituras
     Scanner leitor = new Scanner(System.in);
-
-    // Inicializar o CRUD;
 
     String nomeBase;
     int opcao = 0;
@@ -100,8 +97,8 @@ public class Main {
           // Cria o objeto Game com os dados recebidos
           Game game = new Game(id, name, release, required, price, description, generes);
 
-          // Chama o método para escrever o novo game no banco de dados (exemplo)
-          crudCriarNovoJogo.EscreverNovoGame(game);
+          // Chama o método para escrever o novo game no banco de dados
+          crudCriarNovoJogo.EscreverNovoGame(game, false);
           System.out.println("Jogo criado com sucesso");
           break;
 
@@ -116,14 +113,72 @@ public class Main {
           var gameResult = crudLerRegistroPorId.LerGame(idGame);
 
           if (gameResult != null)
-          System.out.println(gameResult);
-          else System.out.println("Game com ID " + idGame + " não encontrado.");
-
+            gameResult.MostraAtributos(gameResult);
+          else
+            System.out.println("Game com ID " + idGame + " não encontrado.");
           break;
 
         // Opçao 3 = Atualizar um registro
         case 3:
-          System.out.println("Update");
+          Crud crudAtualizarJogo = new Crud();
+          System.out.println("Digite o Id do Jogo que deseja atualizar");
+          var resultGame = crudAtualizarJogo.LerGame(leitor.nextInt());
+
+          if (resultGame != null) {
+            leitor.nextLine();
+
+            crudAtualizarJogo.ApagarGame(resultGame.getAppID());
+
+            System.out.println("Jogo a ser atualizado");
+            resultGame.MostraAtributos(resultGame);
+
+            System.out.println("Digite os seguintes dados jogo para atualizar");
+
+            System.out.print("Digite o nome do jogo: ");
+            String nameGame = leitor.nextLine();
+
+            System.out.print("Digite o preço do jogo: ");
+            double priceGame = leitor.nextDouble();
+
+            leitor.nextLine();
+
+            System.out.print("Digite a descrição do jogo: ");
+            String descriptionGame = leitor.nextLine();
+
+            System.out.print("Digite a idade mínima do jogo: ");
+            int requiredGame = leitor.nextInt();
+            leitor.nextLine();
+
+            System.out.print("Digite o dia do lançamento (dd): ");
+            int dayGame = leitor.nextInt();
+            leitor.nextLine();
+
+            System.out.print("Digite o mês do lançamento (mm): ");
+            int monthGame = leitor.nextInt();
+            leitor.nextLine();
+
+            System.out.print("Digite o ano do lançamento (yyyy): ");
+            int yearGame = leitor.nextInt();
+            leitor.nextLine();
+
+            // Cria a data de lançamento
+            LocalDate releaseGame = LocalDate.of(yearGame, monthGame, dayGame);
+
+            ArrayList<String> generesGame = new ArrayList<>();
+            System.out.print("Digite os gêneros do jogo separados por vírgula (ex: Ação, Aventura): ");
+            String generesInputGame = leitor.nextLine();
+            String[] generesArrayGame = generesInputGame.split(",");
+            for (String genre : generesArrayGame) {
+              generesGame.add(genre.trim());
+            }
+
+            // Cria o objeto Game com os dados recebidos
+            Game gameUpdate = new Game(resultGame.getAppID(), nameGame, releaseGame, requiredGame, priceGame,
+                descriptionGame, generesGame);
+            crudAtualizarJogo.EscreverNovoGame(gameUpdate, true);
+          } else {
+            System.out.println("Jogo não encontrado");
+          }
           break;
 
         // Opçao 4 = Apagar um registro
@@ -133,8 +188,10 @@ public class Main {
           int idDelete = leitor.nextInt();
           leitor.nextLine();
           var resultado = deletarGame.ApagarGame(idDelete);
-          if(resultado) System.out.println("Game com ID " + idDelete + " deletado com sucesso.");
-          else System.out.println("Game com ID " + idDelete + " não encontrado.");
+          if (resultado)
+            System.out.println("Game com ID " + idDelete + " deletado com sucesso.");
+          else
+            System.out.println("Game com ID " + idDelete + " não encontrado.");
           break;
 
         // Opçao 5 = Sair do sistema
@@ -154,7 +211,7 @@ public class Main {
           break;
       }
     }
-    // fecha o leitor antes de terminar o programa
+
     leitor.close();
   }
 

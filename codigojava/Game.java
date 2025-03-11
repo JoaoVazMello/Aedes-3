@@ -30,8 +30,9 @@ public class Game {
     System.out.println("Required : " + objetoGame.Required);
     System.out.println("Price : " + objetoGame.Price);
     System.out.println("Description : " + objetoGame.Description);
+    System.out.print("Generos: ");
     for(String generos : objetoGame.Genres){
-      System.out.println("Generos: " + generos);
+      System.out.print(generos+ ",");
     }
     System.out.println("==============================================================================");
     System.out.println("\n");
