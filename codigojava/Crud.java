@@ -1,137 +1,209 @@
 package codigojava;
 
+import java.io.ByteArrayInputStream;
+import java.io.DataInputStream;
+import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
 public class Crud {
-
-  private int ultimoID;
-
   public Crud() {
-    ultimoID = 0;
   }
 
-  // Funçao que vai escrever no Binario
   public void EscreverBinario(ArrayList<Game> objGame) {
+    RandomAccessFile arquivo = null;
+    int ultimoID = 0;
     try {
       // Abrir arquivo para escrita
-      RandomAccessFile arquivo = new RandomAccessFile("Dados.bd", "rw");
+      arquivo = new RandomAccessFile("Dados.bd", "rw");
 
-      // inicia o arquivo com o ultimo id
-      arquivo.writeInt(0);
+      // Zera o arquivo e inicia com o último ID
+      arquivo.setLength(0);
+      arquivo.writeInt(0); // Último ID no início
 
       // Posicionar o ponteiro no final do arquivo
       arquivo.seek(arquivo.length());
 
+      // Incrementa o último ID e escreve os dados de cada jogo
       for (Game game : objGame) {
         // Incrementa o último ID e atribui ao jogo
         ultimoID++;
         game.setAppID(ultimoID);
 
-        // Escreve o ID do game
+        // Obter os bytes do jogo usando o método arrayDeBytes()
+        byte[] gameBytes = game.arrayDeBytes();
+
+        // Calcular o tamanho do registro (ID + lápide + tamanho + dados do jogo)
+        int tamanhoRegistro = 4 + 1 + 4 + gameBytes.length; // 4 bytes para ID, 1 byte para lápide, 4 bytes para tamanho
+
+        // Escrever o ID do game
         arquivo.writeInt(game.getAppID());
 
-        // Lápide, boolean pois ele é um bit
-        arquivo.writeBoolean(true);
+        // Escrever a lápide (boolean)
+        arquivo.writeBoolean(true); // 1 byte
 
-        // Calcular tamanho do registro
-        int tamanhoRegistro = game.getByte(game);
+        // Escrever o tamanho do registro
         arquivo.writeInt(tamanhoRegistro);
 
-        // Escreve os dados do jogo
-        arquivo.writeUTF(game.getName());
-        long data = ChronoUnit.DAYS.between(LocalDate.of(1970, 1, 1), game.getRelease());
-        arquivo.writeLong(data);
-        arquivo.writeInt(game.getRequired());
-        arquivo.writeDouble(game.getPrice());
+        // Escrever os dados do jogo
+        arquivo.write(gameBytes);
 
-        // Escreve a descrição (limite de 250 caracteres)
-        String descricao = game.getDescription().length() > 250
-            ? game.getDescription().substring(0, 250)
-            : game.getDescription();
-        arquivo.writeUTF(descricao);
-
-        // Escreve os gêneros
-        for (String genero : game.getGenres()) {
-          arquivo.writeUTF(genero);
-        }
+        System.out.println(game);
       }
 
       // Atualizar o ultimoID na posição 0
       arquivo.seek(0);
       arquivo.writeInt(ultimoID);
 
-      // Fechar o arquivo
-      arquivo.close();
-
       System.out.println("Banco atualizado. Último ID inserido: " + ultimoID);
     } catch (Exception e) {
       System.out.println("Não foi possível criar o banco.");
       e.printStackTrace();
+    } finally {
+      try {
+        // Fechar o arquivo após o processamento
+        if (arquivo != null) {
+          arquivo.close();
+        }
+      } catch (IOException e) {
+        System.out.println("Erro ao fechar o arquivo.");
+        e.printStackTrace();
+      }
     }
   }
 
-  public void EscreverNovoGame(Game game, boolean atualizar) {
+  public boolean EscreverNovoGame(Game game) {
+    RandomAccessFile arquivo = null;
     try {
-      // definindo o ultimo id
-      ultimoID = game.getAppID();
+      int id = PegarUltimoId() + 1;
 
       // Abrir arquivo para escrita
-      RandomAccessFile arquivo = new RandomAccessFile("Dados.bd", "rw");
+      arquivo = new RandomAccessFile("Dados.bd", "rw");
 
       // Posicionar o ponteiro no final do arquivo
       arquivo.seek(arquivo.length());
 
-      // Escreve o ID do game
-      arquivo.writeInt(game.getAppID());
+      // Obter os bytes do jogo usando o método arrayDeBytes()
+      byte[] gameBytes = game.arrayDeBytes();
 
-      // Lápide, boolean pois ela é um bit
-      arquivo.writeBoolean(true);
+      // Calcular o tamanho do registro (ID + lápide + tamanho + dados do jogo)
+      int tamanhoRegistro = 4 + 1 + 4 + gameBytes.length; // 4 bytes para ID, 1 byte para lápide, 4 bytes para tamanho
 
-      // Calcular tamanho do registro
-      int tamanhoRegistro = game.getByte(game);
+      // Escrever o ID do game
+      arquivo.writeInt(id);
+
+      // Escrever a lápide (boolean)
+      arquivo.writeBoolean(true); // 1 byte
+
+      // Escrever o tamanho do registro
       arquivo.writeInt(tamanhoRegistro);
 
-      // Escreve os dados do jogo
-      arquivo.writeUTF(game.getName());
-      long data = ChronoUnit.DAYS.between(LocalDate.of(1970, 1, 1), game.getRelease());
-      arquivo.writeLong(data);
-      arquivo.writeInt(game.getRequired());
-      arquivo.writeDouble(game.getPrice());
+      // Escrever os dados do jogo
+      arquivo.write(gameBytes);
 
-      // Escreve a descrição (limite de 250 caracteres)
-      String descricao = game.getDescription().length() > 250
-          ? game.getDescription().substring(0, 250)
-          : game.getDescription();
-      arquivo.writeUTF(descricao);
-
-      // Escreve os gêneros
-      for (String genero : game.getGenres()) {
-        arquivo.writeUTF(genero);
-      }
+      System.out.println(game);
 
       // Atualizar o ultimoID na posição 0
-      // caso não seja atualização
-      if(!atualizar) {
-        arquivo.seek(0);
-        arquivo.writeInt(ultimoID);
-      }
+      arquivo.seek(0);
+      arquivo.writeInt(id);
+      System.out.println("Banco atualizado. Último ID inserido: " + id);
 
-      // Fechar o arquivo
-      arquivo.close();
+      return true;
 
-      System.out.println("Banco atualizado. Último ID inserido: " + ultimoID);
-    } catch (Exception e) {
+    } catch (
+
+    Exception e) {
       System.out.println("Não foi possível criar o banco.");
       e.printStackTrace();
+    } finally {
+      try {
+        // Fechar o arquivo após o processamento
+        if (arquivo != null) {
+          arquivo.close();
+        }
+      } catch (IOException e) {
+        System.out.println("Erro ao fechar o arquivo.");
+        e.printStackTrace();
+      }
+    }
+
+    return false;
+  }
+
+  public boolean AtualizarGame(Game game, Game original) {
+    try {
+      RandomAccessFile arquivo = new RandomAccessFile("Dados.bd", "rw");
+
+      // Ler o último ID no arquivo (não será alterado, pois estamos apenas marcando a
+      // lápide e adicionando no final)
+      arquivo.readInt();
+
+      // Percorrer os registros no arquivo
+      while (arquivo.getFilePointer() < arquivo.length()) {
+        // Ler ID, lápide e tamanho do registro
+        int id = arquivo.readInt();
+        boolean valido = arquivo.readBoolean();
+        int tamanhoRegistro = arquivo.readInt();
+
+        // Se o ID do game original for encontrado e a lápide for válida
+        if (id == original.getAppID() && valido) {
+          // Se os tamanhos dos jogos forem iguais
+          if (game.arrayDeBytes().length == original.arrayDeBytes().length) {
+            // Voltar à posição onde os dados do jogo começam
+            long posicaoDados = arquivo.getFilePointer();
+
+            // Calcular o número de bytes para os dados do jogo
+            byte[] gameBytes = game.arrayDeBytes();
+            arquivo.seek(posicaoDados);
+
+            // Escrever os novos dados (sem alterar ID, lápide ou tamanho)
+            arquivo.write(gameBytes); // Sobrescrever os dados do jogo
+
+            System.out.println("Jogo atualizado com sucesso!");
+            break; // Terminar a execução após a atualização
+          } else {
+
+            long posicao = arquivo.getFilePointer() - 1 - 4; // Voltar à posição da lápide
+            arquivo.seek(posicao);
+            arquivo.writeBoolean(false); // Apaga o jogo (marcando a lápide como falsa)
+            System.out.println("Jogo original marcado como inválido.");
+
+            // Adicionar o novo jogo no final
+            game.setAppID(original.getAppID()); // Atualiza o ID do novo jogo
+            byte[] gameBytes = game.arrayDeBytes(); // Obter os bytes do jogo
+
+            // Calcular o tamanho do registro
+            int tamanhoRegistroNovo = 4 + 1 + 4 + gameBytes.length; // 4 bytes para ID, 1 byte para lápide, 4 bytes para
+                                                                    // tamanho, e os dados
+
+            // Posicionar o ponteiro no final do arquivo
+            arquivo.seek(arquivo.length());
+
+            // Escrever o novo jogo no final
+            arquivo.writeInt(game.getAppID()); // Escrever o ID do jogo
+            arquivo.writeBoolean(true); // "true" para indicar que o objeto está ativo
+            arquivo.writeInt(tamanhoRegistroNovo); // Escrever o tamanho do registro
+            arquivo.write(gameBytes); // Escrever os dados do jogo
+
+            System.out.println("Jogo atualizado e adicionado no final com sucesso!");
+            break; // Terminar a execução após a atualização
+          }
+        } else {
+          // Pular o registro se não for o jogo desejado
+          arquivo.skipBytes(tamanhoRegistro - 4 - 1 - 4); // Pular os bytes do registro
+        }
+      }
+
+      arquivo.close();
+      return true;
+    } catch (Exception e) {
+      System.out.println("Erro ao atualizar o game.");
+      e.printStackTrace();
+      return false;
     }
   }
 
-  public void AtualizarGame(Game game) {
-
-  }
   public int PegarUltimoId() {
     int id = 0;
     try {
@@ -148,53 +220,77 @@ public class Crud {
   }
 
   public Game LerGame(int appID) {
+    RandomAccessFile Acesso = null;
     try {
-      RandomAccessFile Acesso = new RandomAccessFile("Dados.bd", "r");
-      Acesso.seek(4); // Pula o primeiro inteiro (ultimoID)
-
+      // Abrir o arquivo para leitura
+      Acesso = new RandomAccessFile("Dados.bd", "r");
+      Acesso.readInt(); // para ler o ultimo id e pular
+      // Percorrer os registros no arquivo
       while (Acesso.getFilePointer() < Acesso.length()) {
-        int id = Acesso.readInt(); // Lê o ID do game
-        boolean valido = Acesso.readBoolean(); // Lê a lápide
-        int tamanhoRegistro = Acesso.readInt(); // Lê o tamanho do registro
 
+        // Ler o ID do game
+        int id = Acesso.readInt();
+
+        // Ler a lápide (boolean)
+        boolean valido = Acesso.readBoolean();
+
+        // Ler o tamanho do registro
+        int tamanhoRegistro = Acesso.readInt() - 9; // não conta com o id, a lapide e tamnho(4,1,4)
+
+        // Verificar se é o game desejado e se está válido
         if (id == appID && valido) {
-          // Se for o ID buscado e o registro for válido, lê os dados do game
-          String name = Acesso.readUTF();
-          long releaseDays = Acesso.readLong();
-          LocalDate releaseDate = LocalDate.of(1970, 1, 1).plusDays(releaseDays);
-          int requiredAge = Acesso.readInt();
-          double price = Acesso.readDouble();
-          String description = Acesso.readUTF();
+          // Ler os bytes dos dados do jogo
+          byte[] gameBytes = new byte[tamanhoRegistro];
+          Acesso.readFully(gameBytes);
 
-          // Lê os gêneros
+          // Ler os dados do jogo
+          DataInputStream dis = new DataInputStream(new ByteArrayInputStream(gameBytes));
+
+          String name = dis.readUTF();
+
+          long releaseDays = dis.readLong();
+
+          LocalDate releaseDate = LocalDate
+              .of(1970, 1, 1)
+              .plusDays(releaseDays);
+
+          int requiredAge = dis.readInt();
+
+          double price = dis.readDouble();
+
+          String description = dis.readUTF();
+
           ArrayList<String> genres = new ArrayList<>();
-          int bytesLidos = 4 + 1 + 4; // ID (4) + lápide (1) + tamanhoRegistro (4)
-
-          bytesLidos += name.getBytes("UTF-8").length + 2; // Nome (UTF)
-          bytesLidos += 8; // Data de lançamento (long)
-          bytesLidos += 4; // Required age (int)
-          bytesLidos += 8; // Preço (double)
-          bytesLidos += description.getBytes("UTF-8").length + 2; // Descrição (UTF)
-
-          while (bytesLidos < tamanhoRegistro + 4) { // +4 por causa do próprio campo tamanhoRegistro
-            String genre = Acesso.readUTF();
-            genres.add(genre);
-            bytesLidos += genre.getBytes("UTF-8").length + 2; // Cada string + 2 bytes extras do UTF
+          int qtdGenres = dis.readInt();
+          while (qtdGenres > 0) {
+            genres.add(dis.readUTF());
+            qtdGenres--;
           }
 
-          Acesso.close();
+          dis.close();
+
           return new Game(id, name, releaseDate, requiredAge, price, description, genres);
         } else {
-          Acesso.skipBytes(tamanhoRegistro); // Pula o registro inteiro
+          // Pular o registro atual, se não for o game desejado
+          Acesso.skipBytes(tamanhoRegistro);
         }
       }
-
-      Acesso.close();
     } catch (Exception e) {
       System.out.println("Erro ao ler o game do arquivo.");
       e.printStackTrace();
+    } finally {
+      try {
+        // Fechar o arquivo
+        if (Acesso != null) {
+          Acesso.close();
+        }
+      } catch (IOException e) {
+        System.out.println("Erro ao fechar o arquivo.");
+        e.printStackTrace();
+      }
     }
-    return null;
+
+    return null; // Caso o game não seja encontrado
   }
 
   public boolean ApagarGame(int appID) {
@@ -212,7 +308,7 @@ public class Crud {
           Acesso.close();
           return true;
         } else {
-          int tamanhoRegistro = Acesso.readInt(); // Lê o tamanho do registro
+          int tamanhoRegistro = Acesso.readInt() - 9; // Lê o tamanho do registro
           Acesso.skipBytes(tamanhoRegistro); // Pula o registro inteiro
         }
       }

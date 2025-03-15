@@ -2,7 +2,6 @@ package codigojava;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -10,12 +9,13 @@ public class Main {
   public static void main(String[] args) {
 
     Scanner leitor = new Scanner(System.in);
+    Crud crud = new Crud();
 
     String nomeBase;
     int opcao = 0;
 
     // Laço de repetiçao para o menu
-    while (opcao < 5) {
+    while (opcao != 6) {
 
       // Opçoes de menu para realizar as operaçoes do crud
       System.out.println("======================== Sistema de CRUD - Aedes3 ========================");
@@ -35,7 +35,6 @@ public class Main {
       switch (opcao) {
         // Opçao 0 = Carregamento da base de dados;
         case 0:
-          Crud crud = new Crud();
 
           // Coleta o nome da base de dados
           System.out.print("Digite o nome da base de dados: ");
@@ -52,9 +51,6 @@ public class Main {
         // Opçao 1 = Criar novo Registro
         case 1:
           System.out.println("Criar novo jogo");
-
-          Crud crudCriarNovoJogo = new Crud();
-          int id = crudCriarNovoJogo.PegarUltimoId() + 1;
 
           System.out.print("Digite o nome do jogo: ");
           String name = leitor.nextLine();
@@ -95,22 +91,21 @@ public class Main {
           }
 
           // Cria o objeto Game com os dados recebidos
-          Game game = new Game(id, name, release, required, price, description, generes);
+          Game game = new Game(0, name, release, required, price, description, generes);
 
           // Chama o método para escrever o novo game no banco de dados
-          crudCriarNovoJogo.EscreverNovoGame(game, false);
+          crud.EscreverNovoGame(game);
           System.out.println("Jogo criado com sucesso");
           break;
 
         // Opçao 2 = Ler um registro
         case 2:
-          Crud crudLerRegistroPorId = new Crud();
 
           System.out.println("Digite o id do jogo procurado");
           int idGame = leitor.nextInt();
           leitor.nextLine();
 
-          var gameResult = crudLerRegistroPorId.LerGame(idGame);
+          var gameResult = crud.LerGame(idGame);
 
           if (gameResult != null)
             gameResult.MostraAtributos(gameResult);
@@ -120,16 +115,13 @@ public class Main {
 
         // Opçao 3 = Atualizar um registro
         case 3:
-          Crud crudAtualizarJogo = new Crud();
           System.out.println("Digite o Id do Jogo que deseja atualizar");
-          var resultGame = crudAtualizarJogo.LerGame(leitor.nextInt());
+          var resultGame = crud.LerGame(leitor.nextInt());
 
           if (resultGame != null) {
             leitor.nextLine();
 
-            crudAtualizarJogo.ApagarGame(resultGame.getAppID());
-
-            System.out.println("Jogo a ser atualizado");
+            System.out.println("Jogo a ser atualizado: ");
             resultGame.MostraAtributos(resultGame);
 
             System.out.println("Digite os seguintes dados jogo para atualizar");
@@ -173,9 +165,11 @@ public class Main {
             }
 
             // Cria o objeto Game com os dados recebidos
-            Game gameUpdate = new Game(resultGame.getAppID(), nameGame, releaseGame, requiredGame, priceGame,
+            Game gameUpdate = new Game(resultGame.getAppID(), nameGame, releaseGame,
+                requiredGame, priceGame,
                 descriptionGame, generesGame);
-            crudAtualizarJogo.EscreverNovoGame(gameUpdate, true);
+
+            crud.AtualizarGame(gameUpdate, resultGame);
           } else {
             System.out.println("Jogo não encontrado");
           }
@@ -183,19 +177,22 @@ public class Main {
 
         // Opçao 4 = Apagar um registro
         case 4:
-          Crud deletarGame = new Crud();
           System.out.println("Digite o id do jogo a ser deletado");
           int idDelete = leitor.nextInt();
           leitor.nextLine();
-          var resultado = deletarGame.ApagarGame(idDelete);
+          var resultado = crud.ApagarGame(idDelete);
           if (resultado)
             System.out.println("Game com ID " + idDelete + " deletado com sucesso.");
           else
             System.out.println("Game com ID " + idDelete + " não encontrado.");
           break;
 
-        // Opçao 5 = Sair do sistema
         case 5:
+          System.out.println("Ordenação");
+
+          break;
+        // Opçao 5 = Sair do sistema
+        case 6:
           System.out.println("\n");
           System.out.println("=====================================");
           System.out.println("=  Obrigado por utilizar o sistema  =");
@@ -207,7 +204,6 @@ public class Main {
         // Opçao invalida
         default:
           System.out.println("Opçao Invalida");
-          opcao = leitor.nextInt();
           break;
       }
     }

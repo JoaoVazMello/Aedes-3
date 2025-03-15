@@ -21,7 +21,9 @@ public class LeitorCSV {
   }
 
   public LeitorCSV(String nomeBase) {
-    path = "../BaseDeDados/" + nomeBase;
+    // path = "../BaseDeDados/" + nomeBase;
+
+    path = "/Users/pedrofelix/Aedes-3/BaseDeDados/BaseDeDados.csv";
   }
 
   // Metodo para trabalhar a lista do CSV
@@ -80,7 +82,7 @@ public class LeitorCSV {
 
       // Loop para percorrer todas as linhas do arquivo , contador para diminuir a
       // quantidade de testes;
-      while ((linha = buffer.readLine()) != null && contador < 5) {
+      while ((linha = buffer.readLine()) != null && contador < 10) {
 
         // Funçao que vai splitar a linha
         String[] lista = Splitador(linha);
@@ -111,7 +113,7 @@ public class LeitorCSV {
         novGamelist.add(objGame);
 
         // Mostrar Atributos carregados no objeto
-        objGame.MostraAtributos(objGame);
+        // objGame.MostraAtributos(objGame);
 
         // Contador para a quantidade de teste;
         contador++;
