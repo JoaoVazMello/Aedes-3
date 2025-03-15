@@ -1,6 +1,8 @@
 package codigojava;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.time.LocalDate;
@@ -109,6 +111,41 @@ public class Game {
     }
 
     return baos.toByteArray();
+  }
+
+  public static Game recontruir(int id, byte[] gameBytes) {
+    DataInputStream dis;
+    try {
+      dis = new DataInputStream(new ByteArrayInputStream(gameBytes));
+      String name = dis.readUTF();
+
+      long releaseDays = dis.readLong();
+
+      LocalDate releaseDate = LocalDate
+          .of(1970, 1, 1)
+          .plusDays(releaseDays);
+
+      int requiredAge = dis.readInt();
+
+      double price = dis.readDouble();
+
+      String description = dis.readUTF();
+
+      ArrayList<String> genres = new ArrayList<>();
+      int qtdGenres = dis.readInt();
+      while (qtdGenres > 0) {
+        genres.add(dis.readUTF());
+        qtdGenres--;
+      }
+
+      dis.close();
+
+      return new Game(id, name, releaseDate, requiredAge, price, description, genres);
+    } catch (IOException ex) {
+      System.out.println("Erro ao realizar o parse");
+    }
+
+    return null;
   }
 
   public int getAppID() {

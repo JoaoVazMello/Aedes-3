@@ -1,10 +1,7 @@
 package codigojava;
 
-import java.io.ByteArrayInputStream;
-import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.RandomAccessFile;
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Crud {
@@ -243,33 +240,7 @@ public class Crud {
           byte[] gameBytes = new byte[tamanhoRegistro];
           Acesso.readFully(gameBytes);
 
-          // Ler os dados do jogo
-          DataInputStream dis = new DataInputStream(new ByteArrayInputStream(gameBytes));
-
-          String name = dis.readUTF();
-
-          long releaseDays = dis.readLong();
-
-          LocalDate releaseDate = LocalDate
-              .of(1970, 1, 1)
-              .plusDays(releaseDays);
-
-          int requiredAge = dis.readInt();
-
-          double price = dis.readDouble();
-
-          String description = dis.readUTF();
-
-          ArrayList<String> genres = new ArrayList<>();
-          int qtdGenres = dis.readInt();
-          while (qtdGenres > 0) {
-            genres.add(dis.readUTF());
-            qtdGenres--;
-          }
-
-          dis.close();
-
-          return new Game(id, name, releaseDate, requiredAge, price, description, genres);
+          return Game.recontruir(id, gameBytes);
         } else {
           // Pular o registro atual, se não for o game desejado
           Acesso.skipBytes(tamanhoRegistro);
