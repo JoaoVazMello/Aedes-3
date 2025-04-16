@@ -4,12 +4,14 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static codigojava.Game.MostraAtributos;
+
 public class Main {
 
   public static void main(String[] args) {
 
     Scanner leitor = new Scanner(System.in);
-    Crud crud = new Crud();
+    CrudSequencial crud = new CrudSequencial();
 
     String nomeBase;
     int opcao = 0;
@@ -108,7 +110,7 @@ public class Main {
           var gameResult = crud.LerGame(idGame);
 
           if (gameResult != null)
-            gameResult.MostraAtributos(gameResult);
+            MostraAtributos(gameResult);
           else
             System.out.println("Game com ID " + idGame + " não encontrado.");
           break;
@@ -122,7 +124,7 @@ public class Main {
             leitor.nextLine();
 
             System.out.println("Jogo a ser atualizado: ");
-            resultGame.MostraAtributos(resultGame);
+            MostraAtributos(resultGame);
 
             System.out.println("Digite os seguintes dados jogo para atualizar");
 
@@ -169,7 +171,7 @@ public class Main {
                 requiredGame, priceGame,
                 descriptionGame, generesGame);
 
-            crud.AtualizarGame(gameUpdate, resultGame);
+            crud.AtualizarGame(gameUpdate);
           } else {
             System.out.println("Jogo não encontrado");
           }
@@ -181,8 +183,11 @@ public class Main {
           int idDelete = leitor.nextInt();
           leitor.nextLine();
           var resultado = crud.ApagarGame(idDelete);
-          if (resultado)
-            System.out.println("Game com ID " + idDelete + " deletado com sucesso.");
+          if (resultado != null) {
+              System.out.println("Game com ID " + idDelete + " deletado com sucesso.");
+              MostraAtributos(resultado);
+          }
+
           else
             System.out.println("Game com ID " + idDelete + " não encontrado.");
           break;

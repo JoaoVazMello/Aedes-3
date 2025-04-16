@@ -1,5 +1,7 @@
 package codigojava;
 
+import codigojava.HASH.Registro;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
@@ -9,7 +11,7 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
-public class Game {
+public class Game implements Registro {
   private int AppID;
   private String Name;
   private LocalDate Release;
@@ -29,7 +31,9 @@ public class Game {
     this.Required = Required;
   }
 
-  public void MostraAtributos(Game objetoGame) {
+  public Game() {}
+
+  public static void MostraAtributos(Game objetoGame) {
     System.out.println("\n");
     System.out.println("================================== Atributos no Objeto ======================== ");
     System.out.println("AppID : " + objetoGame.AppID);
@@ -81,9 +85,22 @@ public class Game {
     return tamanho_Bytes; // Este valor será salvo no campo "tamanhoRegistro"
   }
 
-  public byte[] arrayDeBytes() throws IOException {
+  @Override
+  public void setId(int i) {
+    this.AppID = i;
+  }
+
+  @Override
+  public int getId() {
+    return this.AppID;
+  }
+
+  public byte[] toByteArray() throws IOException {
     ByteArrayOutputStream baos = new ByteArrayOutputStream();
     DataOutputStream dos = new DataOutputStream(baos);
+
+    // Escrever o ID do game
+    dos.writeInt(AppID);
 
     // Escrever o nome do jogo (UTF-8)
     dos.writeUTF(Name != null ? Name : "");
@@ -146,6 +163,50 @@ public class Game {
     }
 
     return null;
+  }
+
+  public void fromByteArray(byte[] b) throws IOException {
+    DataInputStream dis;
+    try {
+      dis = new DataInputStream(new ByteArrayInputStream(b));
+      int id = dis.readInt();
+      String name = dis.readUTF();
+
+      long releaseDays = dis.readLong();
+
+      LocalDate releaseDate = LocalDate
+              .of(1970, 1, 1)
+              .plusDays(releaseDays);
+
+      int requiredAge = dis.readInt();
+
+      double price = dis.readDouble();
+
+      String description = dis.readUTF();
+
+      ArrayList<String> genres = new ArrayList<>();
+      int qtdGenres = dis.readInt();
+      while (qtdGenres > 0) {
+        genres.add(dis.readUTF());
+        qtdGenres--;
+      }
+
+      dis.close();
+
+      this.AppID = id;
+      this.Name = name;
+      this.Release = releaseDate;
+      this.Price = price;
+      this.Description = description;
+      this.Genres = genres;
+      this.Required = requiredAge;
+
+
+    } catch (IOException ex) {
+      System.out.println("Erro ao realizar o parse");
+      throw  new IOException();
+    }
+
   }
 
   public int getAppID() {
