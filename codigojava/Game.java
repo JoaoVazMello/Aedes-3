@@ -31,7 +31,14 @@ public class Game implements Registro {
     this.Required = Required;
   }
 
-  public Game() {}
+  public Game() {
+    this(-1, "", LocalDate.of(2000, 1, 1), 0, 0.0, "", new ArrayList<String>());
+  }
+
+  public Game(String name, LocalDate release, int required, double price, String description, ArrayList<String> genres) {
+    this(-1, name, release, required, price, description, genres);
+  }
+
 
   public static void MostraAtributos(Game objetoGame) {
     System.out.println("\n");

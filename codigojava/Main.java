@@ -1,5 +1,7 @@
 package codigojava;
 
+import codigojava.HASH.CrudHash;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -8,10 +10,11 @@ import static codigojava.Game.MostraAtributos;
 
 public class Main {
 
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     Scanner leitor = new Scanner(System.in);
     CrudSequencial crud = new CrudSequencial();
+    CrudHash<Game> hash = new CrudHash<>("games", Game.class.getConstructor());
 
     String nomeBase;
     int opcao = 0;
@@ -48,6 +51,14 @@ public class Main {
 
           // Chamar o objeto Crud para realizar a operaçao de escrever o binario
           crud.EscreverBinario(ListaDeGames);
+
+          ListaDeGames.forEach((obj) -> {
+              try {
+                  hash.create(obj);
+              } catch (Exception e) {
+                  throw new RuntimeException(e);
+              }
+          } );
           break;
 
         // Opçao 1 = Criar novo Registro
@@ -107,8 +118,8 @@ public class Main {
           int idGame = leitor.nextInt();
           leitor.nextLine();
 
-          var gameResult = crud.LerGame(idGame);
-
+//          var gameResult = crud.LerGame(idGame);
+          var gameResult = hash.read(idGame);
           if (gameResult != null)
             MostraAtributos(gameResult);
           else
@@ -167,7 +178,7 @@ public class Main {
             }
 
             // Cria o objeto Game com os dados recebidos
-            Game gameUpdate = new Game(resultGame.getAppID(), nameGame, releaseGame,
+            Game gameUpdate = new Game(resultGame.getId(), nameGame, releaseGame,
                 requiredGame, priceGame,
                 descriptionGame, generesGame);
 

@@ -21,9 +21,9 @@ public class LeitorCSV {
   }
 
   public LeitorCSV(String nomeBase) {
-    path = "../BaseDeDados/" + nomeBase;
+//    path = "../BaseDeDados/" + nomeBase;
 
-    // path = "/Users/pedrofelix/Aedes-3/BaseDeDados/BaseDeDados.csv";
+     path = "/Users/pedrofelix/Aedes-3/BaseDeDados/BaseDeDados.csv";
   }
 
   // Metodo para trabalhar a lista do CSV
