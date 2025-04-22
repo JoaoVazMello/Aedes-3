@@ -68,14 +68,14 @@ public class CrudSequencial {
   public boolean EscreverNovoGame(Game game) {
     RandomAccessFile arquivo = null;
     try {
+      // Abrir arquivo para escrita
+      arquivo = new RandomAccessFile("Dados.bd", "rw");
+
       int id = PegarUltimoId() + 1;
       game.setAppID(id);
 
       // Obter os bytes do jogo usando o método arrayDeBytes()
       byte[] gameBytes = game.toByteArray();
-
-      // Abrir arquivo para escrita
-      arquivo = new RandomAccessFile("Dados.bd", "rw");
 
       // Atualizar o ultimoID na posição 0
       arquivo.seek(0);

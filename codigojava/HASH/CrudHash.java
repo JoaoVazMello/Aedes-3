@@ -48,12 +48,12 @@ public class CrudHash<T extends Registro> {
         if (endereco == -1) { // nenhum espaço disponível; escreve o registro no fim do arquivo
             arquivo.seek(arquivo.length());
             endereco = arquivo.getFilePointer();
-            arquivo.writeByte(' '); // lápide
+            arquivo.writeBoolean(true); // lápide
             arquivo.writeShort(b.length); // tamanho do vetor de bytes
             arquivo.write(b); // vetor de bytes
         } else {
             arquivo.seek(endereco);
-            arquivo.writeByte(' '); // limpa o lápide
+            arquivo.writeBoolean(true); // limpa o lápide
             arquivo.skipBytes(2); // pula o indicador de tamanho para preservá-lo
             arquivo.write(b); // vetor de bytes
         }
@@ -67,14 +67,14 @@ public class CrudHash<T extends Registro> {
         T obj;
         short tam;
         byte[] b;
-        byte lapide;
+        boolean lapide;
 
         ParIDEndereco pid = indiceDireto.read(id);
         if(pid!=null) {
             arquivo.seek(pid.getEndereco());
             obj = construtor.newInstance();
-            lapide = arquivo.readByte();
-            if(lapide==' ') {
+            lapide = arquivo.readBoolean();
+            if(lapide) {
                 tam = arquivo.readShort();
                 b = new byte[tam];
                 arquivo.read(b);
@@ -90,14 +90,14 @@ public class CrudHash<T extends Registro> {
         T obj;
         short tam;
         byte[] b;
-        byte lapide;
+        boolean lapide;
 
         ParIDEndereco pie = indiceDireto.read(id);
         if(pie!=null) {
             arquivo.seek(pie.getEndereco());
             obj = construtor.newInstance();
-            lapide = arquivo.readByte();
-            if(lapide==' ') {
+            lapide = arquivo.readBoolean();
+            if(lapide) {
                 tam = arquivo.readShort();
                 b = new byte[tam];
                 arquivo.read(b);
@@ -105,7 +105,7 @@ public class CrudHash<T extends Registro> {
                 if(obj.getId()==id) {
                     if(indiceDireto.delete(id)) {
                         arquivo.seek(pie.getEndereco());
-                        arquivo.write('*');
+                        arquivo.write(0);
                         addDeleted(tam, pie.getEndereco());
                         return true;
                     }
@@ -119,13 +119,13 @@ public class CrudHash<T extends Registro> {
         T obj;
         short tam;
         byte[] b;
-        byte lapide;
+        boolean lapide;
         ParIDEndereco pie = indiceDireto.read(novoObj.getId());
         if(pie!=null) {
             arquivo.seek(pie.getEndereco());
             obj = construtor.newInstance();
-            lapide = arquivo.readByte();
-            if(lapide==' ') {
+            lapide = arquivo.readBoolean();
+            if(lapide) {
                 tam = arquivo.readShort();
                 b = new byte[tam];
                 arquivo.read(b);
@@ -145,7 +145,7 @@ public class CrudHash<T extends Registro> {
                     else {
                         // exclui o registro anterior
                         arquivo.seek(pie.getEndereco());
-                        arquivo.write('*');
+                        arquivo.writeBoolean(false);
                         addDeleted(tam, pie.getEndereco());                        
 
                         // grava o novo registro
@@ -153,12 +153,12 @@ public class CrudHash<T extends Registro> {
                         if(novoEndereco == -1) {   // nenhum espaço disponível; escreve o registro no fim do arquivo  
                             arquivo.seek(arquivo.length());
                             novoEndereco = arquivo.getFilePointer();
-                            arquivo.writeByte(' ');       // lápide
+                            arquivo.writeBoolean(true);       // lápide
                             arquivo.writeShort(tam2);       // tamanho do vetor de bytes
                             arquivo.write(b2);              // vetor de bytes
                         } else {
                             arquivo.seek(novoEndereco);
-                            arquivo.writeByte(' ');       // limpa o lápide
+                            arquivo.writeBoolean(true);    // limpa o lápide
                             arquivo.skipBytes(2);         // pula o indicador de tamanho para preservá-lo
                             arquivo.write(b2);              // vetor de bytes
                         }
