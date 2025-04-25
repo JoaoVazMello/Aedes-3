@@ -4,6 +4,7 @@ import codigojava.HASH.CrudHash;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import static codigojava.Game.MostraAtributos;
@@ -14,7 +15,7 @@ public class Main {
 
     Scanner leitor = new Scanner(System.in);
     CrudSequencial crud = new CrudSequencial();
-    CrudHash<Game> hash = new CrudHash<>("games", Game.class.getConstructor());
+    CrudHash<Game> hash = new CrudHash<>("games", Game.class.getConstructor(), 5);
 
     String nomeBase;
     int opcao = 0;
@@ -47,18 +48,11 @@ public class Main {
 
           // Inicializador do leitorCSV
           LeitorCSV leitorCSV = new LeitorCSV(nomeBase);
-          ArrayList<Game> ListaDeGames = leitorCSV.LerCsv();
+          List<Game> ListaDeGames = leitorCSV.LerCsv();
 
           // Chamar o objeto Crud para realizar a operaçao de escrever o binario
-          crud.EscreverBinario(ListaDeGames);
+          hash.create(ListaDeGames);
 
-          ListaDeGames.forEach((obj) -> {
-              try {
-                  hash.create(obj);
-              } catch (Exception e) {
-                  throw new RuntimeException(e);
-              }
-          } );
           break;
 
         // Opçao 1 = Criar novo Registro
@@ -119,7 +113,8 @@ public class Main {
           leitor.nextLine();
 
 //          var gameResult = crud.LerGame(idGame);
-          var gameResult = hash.read(idGame);
+//          var gameResult = hash.read(idGame);
+          var gameResult = hash.readArvore(idGame);
           if (gameResult != null)
             MostraAtributos(gameResult);
           else
@@ -129,7 +124,7 @@ public class Main {
         // Opçao 3 = Atualizar um registro
         case 3:
           System.out.println("Digite o Id do Jogo que deseja atualizar");
-          var resultGame = crud.LerGame(leitor.nextInt());
+          var resultGame = hash.read(leitor.nextInt());
 
           if (resultGame != null) {
             leitor.nextLine();
@@ -182,7 +177,7 @@ public class Main {
                 requiredGame, priceGame,
                 descriptionGame, generesGame);
 
-            crud.AtualizarGame(gameUpdate);
+            hash.update(gameUpdate);
           } else {
             System.out.println("Jogo não encontrado");
           }
@@ -193,10 +188,10 @@ public class Main {
           System.out.println("Digite o id do jogo a ser deletado");
           int idDelete = leitor.nextInt();
           leitor.nextLine();
-          var resultado = crud.ApagarGame(idDelete);
-          if (resultado != null) {
+
+          var resultado = hash.delete(idDelete);
+          if (resultado) {
               System.out.println("Game com ID " + idDelete + " deletado com sucesso.");
-              MostraAtributos(resultado);
           }
 
           else

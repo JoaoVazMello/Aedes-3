@@ -1,8 +1,14 @@
 package codigojava.HASH;
 
+import codigojava.ARVORE.ArvoreBMais;
+import codigojava.ARVORE.ParIDEnderecoArvore;
+import codigojava.Game;
+
 import java.io.File;
 import java.io.RandomAccessFile;
 import java.lang.reflect.Constructor;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CrudHash<T extends Registro> {
     final int TAM_CABECALHO = 12;
@@ -10,8 +16,11 @@ public class CrudHash<T extends Registro> {
     String nomeArquivo;
     Constructor<T> construtor;
     HashExtensivel<ParIDEndereco> indiceDireto;
+    ArvoreBMais<ParIDEnderecoArvore> arvoreBMais;
+    String na;
 
-    public CrudHash(String na, Constructor<T> c) throws Exception {
+    public CrudHash(String na, Constructor<T> c, int ordem) throws Exception {
+        this.na = na;
         File d = new File(".\\dados");
         if (!d.exists())
             d.mkdir();
@@ -20,7 +29,7 @@ public class CrudHash<T extends Registro> {
         if (!d.exists())
             d.mkdir();
 
-        this.nomeArquivo = ".\\dados\\" + na + "\\" + na + ".db";
+        this.nomeArquivo = ".\\dados\\" + na + "\\" + na + ".bd";
         this.construtor = c;
         arquivo = new RandomAccessFile(this.nomeArquivo, "rw");
         if (arquivo.length() < TAM_CABECALHO) {
@@ -31,9 +40,54 @@ public class CrudHash<T extends Registro> {
         indiceDireto = new HashExtensivel<>(
                 ParIDEndereco.class.getConstructor(),
                 4,
-                ".\\dados\\" + na + "\\" + na + ".d.db", // diretório
-                ".\\dados\\" + na + "\\" + na + ".c.db" // cestos
+                ".\\dados\\" + na + "\\" + na + ".d.bd", // diretório
+                ".\\dados\\" + na + "\\" + na + ".c.bd" // cestos
         );
+
+        arvoreBMais = new ArvoreBMais<>(
+                ParIDEnderecoArvore.class.getConstructor(),
+                5,
+                "/Users/pedrofelix/Aedes-3/codigojava/.\\dados\\indices.db");
+    }
+
+
+    public int create(List<T> objs) throws Exception {
+        arquivo.setLength(0);
+        arquivo.writeInt(0); // último ID
+        arquivo.writeLong(-1); // lista de registros marcados para exclusão
+
+        indiceDireto.limpaArq();
+        indiceDireto = new HashExtensivel<>(
+                ParIDEndereco.class.getConstructor(),
+                4,
+                ".\\dados\\" + na + "\\" + na + ".d.bd", // diretório
+                ".\\dados\\" + na + "\\" + na + ".c.bd" // cestos
+        );
+
+        arvoreBMais.limparArquivo();
+        arvoreBMais = new ArvoreBMais<>(
+                ParIDEnderecoArvore.class.getConstructor(),
+                5,
+                "/Users/pedrofelix/Aedes-3/codigojava/.\\dados\\indices.db");
+
+        int proximoID = 1;
+
+        for (T obj : objs) {
+            obj.setId(proximoID);
+            byte[] b = obj.toByteArray();
+            long endereco = arquivo.getFilePointer();
+            arquivo.writeBoolean(true); // lápide
+            arquivo.writeShort(b.length); // tamanho do vetor de bytes
+            arquivo.write(b); // vetor de bytes
+
+            indiceDireto.create(new ParIDEndereco(proximoID, endereco));
+            arvoreBMais.create(new ParIDEnderecoArvore(proximoID, endereco));
+
+            proximoID++;
+            System.out.println(obj);
+        }
+
+        return 1;
     }
 
     public int create(T obj) throws Exception {
@@ -58,7 +112,9 @@ public class CrudHash<T extends Registro> {
             arquivo.write(b); // vetor de bytes
         }
 
+
         indiceDireto.create(new ParIDEndereco(proximoID, endereco));
+        arvoreBMais.create(new ParIDEnderecoArvore(proximoID, endereco));
 
         return obj.getId();
     }
@@ -71,6 +127,32 @@ public class CrudHash<T extends Registro> {
 
         ParIDEndereco pid = indiceDireto.read(id);
         if(pid!=null) {
+            arquivo.seek(pid.getEndereco());
+            obj = construtor.newInstance();
+            lapide = arquivo.readBoolean();
+            if(lapide) {
+                tam = arquivo.readShort();
+                b = new byte[tam];
+                arquivo.read(b);
+                obj.fromByteArray(b);
+                if(obj.getId()==id)
+                    return obj;
+            }
+        }
+        return null;
+    }
+
+    public T readArvore(int id) throws Exception {
+        T obj;
+        short tam;
+        byte[] b;
+        boolean lapide;
+
+        ArrayList<ParIDEnderecoArvore> resultados = arvoreBMais.read(new ParIDEnderecoArvore(id, -1));
+
+        if(!resultados.isEmpty()) {
+            var pid = resultados.getFirst();
+
             arquivo.seek(pid.getEndereco());
             obj = construtor.newInstance();
             lapide = arquivo.readBoolean();
@@ -107,6 +189,7 @@ public class CrudHash<T extends Registro> {
                         arquivo.seek(pie.getEndereco());
                         arquivo.write(0);
                         addDeleted(tam, pie.getEndereco());
+                        System.out.println(obj);
                         return true;
                     }
                 }

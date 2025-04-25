@@ -297,6 +297,16 @@ public class HashExtensivel<T extends RegistroHashExtensivel<T>> {
         }
     }
 
+    public void limpaArq() throws Exception {
+        arqDiretorio = new RandomAccessFile(nomeArquivoDiretorio, "rw");
+        arqCestos = new RandomAccessFile(nomeArquivoCestos, "rw");
+
+        arqDiretorio.setLength(0);
+
+        arqCestos.setLength(0);
+
+    }
+
     public boolean create(T elem) throws Exception {
 
         // Carrega TODO o diretório para a memória
