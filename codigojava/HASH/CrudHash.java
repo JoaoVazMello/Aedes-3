@@ -5,6 +5,7 @@ import codigojava.ARVORE.ParIDEnderecoArvore;
 import codigojava.Game;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
@@ -119,7 +120,56 @@ public class CrudHash<T extends Registro> {
         return obj.getId();
     }
 
-    public T read(int id) throws Exception {
+    public Game read(int appID) {
+        RandomAccessFile Acesso = null;
+        try {
+            // Abrir o arquivo para leitura
+            Acesso = new RandomAccessFile("Dados.bd", "r");
+            Acesso.readInt(); // para ler o ultimo id e pular
+            // Percorrer os registros no arquivo
+            while (Acesso.getFilePointer() < Acesso.length()) {
+
+                // Ler a lápide (boolean)
+                boolean valido = Acesso.readBoolean();
+
+                // Ler o tamanho do registro
+                int tamanhoRegistro = Acesso.readInt(); // não conta com o id, a lapide e tamnho(4,1,4)
+
+                // Verificar se é o game desejado e se está válido
+                if (valido) {
+                    // Ler os bytes dos dados do jogo
+                    byte[] gameBytes = new byte[tamanhoRegistro];
+                    Acesso.readFully(gameBytes);
+                    Game game = new Game();
+                    game.fromByteArray(gameBytes);
+
+                    if (game.getId() == appID) {
+                        return game;
+                    }
+                } else {
+                    // Pular o registro atual, se não for o game desejado
+                    Acesso.skipBytes(tamanhoRegistro);
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Erro ao ler o game do arquivo.");
+            e.printStackTrace();
+        } finally {
+            try {
+                // Fechar o arquivo
+                if (Acesso != null) {
+                    Acesso.close();
+                }
+            } catch (IOException e) {
+                System.out.println("Erro ao fechar o arquivo.");
+                e.printStackTrace();
+            }
+        }
+
+        return null; // Caso o game não seja encontrado
+    }
+
+    public T readHash(int id) throws Exception {
         T obj;
         short tam;
         byte[] b;
@@ -185,12 +235,14 @@ public class CrudHash<T extends Registro> {
                 arquivo.read(b);
                 obj.fromByteArray(b);
                 if(obj.getId()==id) {
-                    if(indiceDireto.delete(id)) {
+                    if(indiceDireto.delete(id) && arvoreBMais.delete(new ParIDEnderecoArvore(pie.getId(), pie.getEndereco()))) {
                         arquivo.seek(pie.getEndereco());
                         arquivo.write(0);
                         addDeleted(tam, pie.getEndereco());
                         System.out.println(obj);
                         return true;
+                    } else {
+                        return false;
                     }
                 }
             }
@@ -248,6 +300,8 @@ public class CrudHash<T extends Registro> {
 
                         // atualiza o índice direto
                         indiceDireto.update(new ParIDEndereco(novoObj.getId(), novoEndereco));
+                        arvoreBMais.delete(new ParIDEnderecoArvore(pie.getId(), pie.getEndereco()));
+                        arvoreBMais.create(new ParIDEnderecoArvore(novoObj.getId(), novoEndereco));
                     }
                     return true;
                 }

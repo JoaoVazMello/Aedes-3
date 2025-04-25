@@ -7,18 +7,10 @@ import java.util.ArrayList;
 /*
 TABELA HASH EXTENSÍVEL
 
-Os nomes dos métodos foram mantidos em inglês
-apenas para manter a coerência com o resto da
-disciplina:
-- boolean create(T elemento)
-- long read(int hashcode)
-- boolean update(T novoElemento)   //  a chave (hashcode) deve ser a mesma
-- boolean delete(int hashcode)
-
-Implementado pelo Prof. Marcos Kutova
+Implementação original pelo Prof. Marcos Kutova
 v1.1 - 2021
 
-modificado para adequar ao projeto
+modificado para melhor adequação ao projeto
 */
 public class HashExtensivel<T extends RegistroHashExtensivel<T>> {
 
@@ -33,12 +25,12 @@ public class HashExtensivel<T extends RegistroHashExtensivel<T>> {
     public class Cesto {
 
         Constructor<T> construtor;
-        short quantidadeMaxima; // quantidade máxima de elementos que o cesto pode conter
-        short bytesPorElemento; // tamanho fixo de cada elemento em bytes
-        short bytesPorCesto; // tamanho fixo do cesto em bytes
+        int quantidadeMaxima; // quantidade máxima de elementos que o cesto pode conter
+        int bytesPorElemento; // tamanho fixo de cada elemento em bytes
+        int bytesPorCesto; // tamanho fixo do cesto em bytes
 
         byte profundidadeLocal; // profundidade local do cesto
-        short quantidade; // quantidade de elementos presentes no cesto
+        int quantidade; // quantidade de elementos presentes no cesto
         ArrayList<T> elementos; // sequência de elementos armazenados
 
         public Cesto(Constructor<T> ct, int qtdmax) throws Exception {
@@ -47,16 +39,16 @@ public class HashExtensivel<T extends RegistroHashExtensivel<T>> {
 
         public Cesto(Constructor<T> ct, int qtdmax, int pl) throws Exception {
             construtor = ct;
-            if (qtdmax > 32767)
+            if (qtdmax > 131068)
                 throw new Exception("Quantidade máxima de 32.767 elementos");
-            if (pl > 127)
+            if (pl > 511)
                 throw new Exception("Profundidade local máxima de 127 bits");
             profundidadeLocal = (byte) pl;
             quantidade = 0;
-            quantidadeMaxima = (short) qtdmax;
+            quantidadeMaxima = qtdmax;
             elementos = new ArrayList<>(quantidadeMaxima);
             bytesPorElemento = ct.newInstance().size();
-            bytesPorCesto = (short) (bytesPorElemento * quantidadeMaxima + 3);
+            bytesPorCesto =  bytesPorElemento * quantidadeMaxima + 3;
         }
 
         public byte[] toByteArray() throws Exception {
