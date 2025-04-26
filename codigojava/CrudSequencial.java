@@ -87,7 +87,6 @@ public class CrudSequencial {
       // Escrever a lápide (boolean)
       arquivo.writeBoolean(true); // 1 byte
 
-
       // Escrever o tamanho do registro
       arquivo.writeInt(gameBytes.length);
 
@@ -118,7 +117,6 @@ public class CrudSequencial {
     return false;
   }
 
-
   public Game LerGame(int appID) {
     RandomAccessFile Acesso = null;
     try {
@@ -142,7 +140,7 @@ public class CrudSequencial {
           Game game = new Game();
           game.fromByteArray(gameBytes);
 
-          if(game.getId() == appID) {
+          if (game.getId() == appID) {
             return game;
           }
         } else {
@@ -179,7 +177,7 @@ public class CrudSequencial {
         boolean valido = arquivo.readBoolean();
         int tamanhoRegistro = arquivo.readInt();
 
-        if(valido) {
+        if (valido) {
           byte[] gameBytes = new byte[tamanhoRegistro];
           arquivo.readFully(gameBytes);
           Game original = new Game();
@@ -223,7 +221,7 @@ public class CrudSequencial {
               System.out.println("Jogo atualizado e adicionado no final com sucesso!");
               break; // Terminar a execução após a atualização
             }
-        }
+          }
 
         } else {
           // Pular o registro se não for o jogo desejado
@@ -263,7 +261,7 @@ public class CrudSequencial {
           Game game = new Game();
           game.fromByteArray(gameBytes);
 
-          if(game.getId() == appID) {
+          if (game.getId() == appID) {
             long posicao = Acesso.getFilePointer() - (tamanhoRegistro + 5); // Voltar à posição da lápide
             Acesso.seek(posicao);
             Acesso.writeBoolean(false); // Apaga o jogo (marcando a lápide como falsa)
