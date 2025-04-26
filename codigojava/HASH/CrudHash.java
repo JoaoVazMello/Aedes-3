@@ -121,25 +121,24 @@ public class CrudHash<T extends Registro> {
     }
 
     public Game read(int appID) {
-        RandomAccessFile Acesso = null;
         try {
             // Abrir o arquivo para leitura
-            Acesso = new RandomAccessFile("Dados.bd", "r");
-            Acesso.readInt(); // para ler o ultimo id e pular
+            arquivo.readInt(); // para ler o ultimo id e pular
+            arquivo.readLong(); // para ler espacos vazios
             // Percorrer os registros no arquivo
-            while (Acesso.getFilePointer() < Acesso.length()) {
+            while (arquivo.getFilePointer() < arquivo.length()) {
 
                 // Ler a lápide (boolean)
-                boolean valido = Acesso.readBoolean();
+                boolean valido = arquivo.readBoolean();
 
                 // Ler o tamanho do registro
-                int tamanhoRegistro = Acesso.readInt(); // não conta com o id, a lapide e tamnho(4,1,4)
+                int tamanhoRegistro = arquivo.readShort(); // não conta com o id, a lapide e tamnho(4,1,4)
 
                 // Verificar se é o game desejado e se está válido
                 if (valido) {
                     // Ler os bytes dos dados do jogo
                     byte[] gameBytes = new byte[tamanhoRegistro];
-                    Acesso.readFully(gameBytes);
+                    arquivo.readFully(gameBytes);
                     Game game = new Game();
                     game.fromByteArray(gameBytes);
 
@@ -148,23 +147,14 @@ public class CrudHash<T extends Registro> {
                     }
                 } else {
                     // Pular o registro atual, se não for o game desejado
-                    Acesso.skipBytes(tamanhoRegistro);
+                    arquivo.skipBytes(tamanhoRegistro);
                 }
             }
         } catch (Exception e) {
             System.out.println("Erro ao ler o game do arquivo.");
             e.printStackTrace();
-        } finally {
-            try {
-                // Fechar o arquivo
-                if (Acesso != null) {
-                    Acesso.close();
-                }
-            } catch (IOException e) {
-                System.out.println("Erro ao fechar o arquivo.");
-                e.printStackTrace();
-            }
         }
+
 
         return null; // Caso o game não seja encontrado
     }

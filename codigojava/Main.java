@@ -14,8 +14,7 @@ public class Main {
   public static void main(String[] args) throws Exception {
 
     Scanner leitor = new Scanner(System.in);
-    CrudSequencial crud = new CrudSequencial();
-    CrudHash<Game> hash = new CrudHash<>("games", Game.class.getConstructor(), 5);
+    CrudHash<Game> crud = new CrudHash<>("games", Game.class.getConstructor(), 5);
 
     String nomeBase;
     int opcao = 0;
@@ -51,7 +50,7 @@ public class Main {
           List<Game> ListaDeGames = leitorCSV.LerCsv();
 
           // Chamar o objeto Crud para realizar a operaçao de escrever o binario
-          hash.create(ListaDeGames);
+          crud.create(ListaDeGames);
 
           break;
 
@@ -101,7 +100,7 @@ public class Main {
           Game game = new Game(0, name, release, required, price, description, generes);
 
           // Chama o método para escrever o novo game no banco de dados
-          crud.EscreverNovoGame(game);
+          crud.create(game);
           System.out.println("Jogo criado com sucesso");
           break;
 
@@ -112,9 +111,31 @@ public class Main {
           int idGame = leitor.nextInt();
           leitor.nextLine();
 
-//          var gameResult = crud.LerGame(idGame);
-//          var gameResult = hash.read(idGame);
-          var gameResult = hash.readArvore(idGame);
+          Game gameResult = null;
+
+          int opcaoProcurada = 0;
+
+          do {
+            System.out.println("Digite 1 para leitura sequencial, 2 para hash e 3 para arvore B+");
+            opcaoProcurada = leitor.nextInt();
+            leitor.nextLine();
+            switch (opcaoProcurada) {
+              case 1:
+                gameResult = crud.read(idGame);
+                break;
+              case 2:
+                gameResult = crud.readHash(idGame);
+                break;
+              case 3:
+                gameResult = crud.readArvore(idGame);
+                break;
+
+              default:
+                opcao = 4;
+                break;
+            }
+          } while (opcao == 4);
+
           if (gameResult != null)
             MostraAtributos(gameResult);
           else
@@ -124,7 +145,7 @@ public class Main {
         // Opçao 3 = Atualizar um registro
         case 3:
           System.out.println("Digite o Id do Jogo que deseja atualizar");
-          var resultGame = hash.read(leitor.nextInt());
+          var resultGame = crud.readHash(leitor.nextInt());
 
           if (resultGame != null) {
             leitor.nextLine();
@@ -177,7 +198,7 @@ public class Main {
                 requiredGame, priceGame,
                 descriptionGame, generesGame);
 
-            hash.update(gameUpdate);
+            crud.update(gameUpdate);
           } else {
             System.out.println("Jogo não encontrado");
           }
@@ -189,9 +210,9 @@ public class Main {
           int idDelete = leitor.nextInt();
           leitor.nextLine();
 
-          var resultado = hash.delete(idDelete);
+          var resultado = crud.delete(idDelete);
           if (resultado) {
-              System.out.println("Game com ID " + idDelete + " deletado com sucesso.");
+            System.out.println("Game com ID " + idDelete + " deletado com sucesso.");
           }
 
           else
