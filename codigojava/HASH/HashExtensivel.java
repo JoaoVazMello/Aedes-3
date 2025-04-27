@@ -40,9 +40,9 @@ public class HashExtensivel<T extends RegistroHashExtensivel<T>> {
         public Cesto(Constructor<T> ct, int qtdmax, int pl) throws Exception {
             construtor = ct;
             if (qtdmax > 131068)
-                throw new Exception("Quantidade máxima de 32.767 elementos");
+                throw new Exception("Quantidade máxima de 131068 elementos");
             if (pl > 511)
-                throw new Exception("Profundidade local máxima de 127 bits");
+                throw new Exception("Profundidade local máxima de 511 bits");
             profundidadeLocal = (byte) pl;
             quantidade = 0;
             quantidadeMaxima = qtdmax;

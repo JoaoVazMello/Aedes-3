@@ -19,9 +19,11 @@ public class CrudHash<T extends Registro> {
     HashExtensivel<ParIDEndereco> indiceDireto;
     ArvoreBMais<ParIDEnderecoArvore> arvoreBMais;
     String na;
+    int ordem;
 
     public CrudHash(String na, Constructor<T> c, int ordem) throws Exception {
         this.na = na;
+        this.ordem = ordem;
         File d = new File(".\\dados");
         if (!d.exists())
             d.mkdir();
@@ -47,7 +49,7 @@ public class CrudHash<T extends Registro> {
 
         arvoreBMais = new ArvoreBMais<>(
                 ParIDEnderecoArvore.class.getConstructor(),
-                5,
+                ordem,
                 "/Users/pedrofelix/Aedes-3/codigojava/.\\dados\\indices.db");
     }
 
@@ -68,7 +70,7 @@ public class CrudHash<T extends Registro> {
         arvoreBMais.limparArquivo();
         arvoreBMais = new ArvoreBMais<>(
                 ParIDEnderecoArvore.class.getConstructor(),
-                5,
+                ordem,
                 "/Users/pedrofelix/Aedes-3/codigojava/.\\dados\\indices.db");
 
         int proximoID = 1;
@@ -87,6 +89,10 @@ public class CrudHash<T extends Registro> {
             proximoID++;
             System.out.println(obj);
         }
+
+        --proximoID;
+        arquivo.seek(0);
+        arquivo.writeInt(proximoID);
 
         return 1;
     }
@@ -227,7 +233,7 @@ public class CrudHash<T extends Registro> {
                 if(obj.getId()==id) {
                     if(indiceDireto.delete(id) && arvoreBMais.delete(new ParIDEnderecoArvore(pie.getId(), pie.getEndereco()))) {
                         arquivo.seek(pie.getEndereco());
-                        arquivo.write(0);
+                        arquivo.writeBoolean(false);
                         addDeleted(tam, pie.getEndereco());
                         System.out.println(obj);
                         return true;
@@ -343,6 +349,9 @@ public class CrudHash<T extends Registro> {
     // retira um registro à lista de excluídos para reuso, mas com o risco de algum desperdício
     // se necessário, o código pode ser alterado para controlar um limite máximo de desperdício
     public long getDeleted(int tamanhoNecessario) throws Exception {
+
+//        tamanhoNecessario = 0;
+//        if(tamanhoNecessario == 0) return -1;
         long anterior = 4; // início da lista
         arquivo.seek(anterior);
         long endereco = arquivo.readLong(); // endereço do elemento que será testado

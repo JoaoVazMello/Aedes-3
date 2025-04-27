@@ -1,26 +1,13 @@
-/*********
- * ARVORE B+
- *
- * Os nomes dos métodos foram mantidos em inglês
- * apenas para manter a coerência com o resto da
- * disciplina:
- * - boolean create(RegistroArvoreBMais objeto)
- * - int[] read(RegistroArvoreBMais objeto)
- * - boolean delete(RegistroArvoreBMais objeto)
- *
- * Implementado pelo Prof. Marcos Kutova
- * v2.0 - 2021
- */
+
 package codigojava.ARVORE;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.lang.reflect.Constructor;
 
-// Esta versão da árvore funciona apenas como um conjunto de par de chaves.
-// A primeira chave pode repetir na árvore, mas não o par de chaves,
-// isto é, quando a primeira chave de dois elementos for igual, a segunda chave,
-// deve ser necessariamente diferente.
+/*********
+ * Implementação original pelo Prof. Marcos Kutova
+ */
 
 public class ArvoreBMais<T extends RegistroArvoreBMais<T>> {
 
@@ -215,20 +202,21 @@ public class ArvoreBMais<T extends RegistroArvoreBMais<T>> {
         // Nesse primeiro passo, todas as chaves menores que a chave buscada
         // são ultrapassadas
         int i = 0;
-        while (elem!=null && i < pa.elementos.size() && elem.compareTo(pa.elementos.get(i)) > 0) {
+        while (elem != null && i < pa.elementos.size() && elem.compareTo(pa.elementos.get(i)) > 0) {
             i++;
         }
 
         // Chave encontrada (ou pelo menos o ponto onde ela deveria estar).
         // Segundo passo - testa se a chave é a chave buscada e se está em uma folha
         // Obs.: em uma árvore B+, todas as chaves válidas estão nas folhas
-        if (i < pa.elementos.size() && pa.filhos.get(0) == -1 && (elem==null || elem.compareTo(pa.elementos.get(i)) == 0)) {
+        if (i < pa.elementos.size() && pa.filhos.get(0) == -1
+                && (elem == null || elem.compareTo(pa.elementos.get(i)) == 0)) {
 
             // Cria a lista de retorno e insere os elementos encontrados
             ArrayList<T> lista = new ArrayList<>();
-            while (elem==null || elem.compareTo(pa.elementos.get(i)) <= 0) {
+            while (elem == null || elem.compareTo(pa.elementos.get(i)) <= 0) {
 
-                if (elem==null || elem.compareTo(pa.elementos.get(i)) == 0)
+                if (elem == null || elem.compareTo(pa.elementos.get(i)) == 0)
                     lista.add(pa.elementos.get(i));
                 i++;
 
@@ -295,7 +283,7 @@ public class ArvoreBMais<T extends RegistroArvoreBMais<T>> {
         }
 
         // Chave ainda não foi encontrada, continua a busca recursiva pela árvore
-        if (elem==null || i == pa.elementos.size() || elem.compareTo(pa.elementos.get(i)) <= 0)
+        if (elem == null || i == pa.elementos.size() || elem.compareTo(pa.elementos.get(i)) <= 0)
             return read1(elem, pa.filhos.get(i));
         else
             return read1(elem, pa.filhos.get(i + 1));
@@ -341,7 +329,7 @@ public class ArvoreBMais<T extends RegistroArvoreBMais<T>> {
             // Acha o espaço em disco. Testa se há páginas excluídas.
             arquivo.seek(8);
             long end = arquivo.readLong();
-            if(end==-1) {
+            if (end == -1) {
                 end = arquivo.length();
             } else { // reusa um endereço e atualiza a lista de excluídos no cabeçalho
                 arquivo.seek(end);
@@ -459,8 +447,8 @@ public class ArvoreBMais<T extends RegistroArvoreBMais<T>> {
             if (pa.filhos.get(0) == -1)
                 elemAux = np.elementos.get(0).clone();
 
-                // caso contrário, promove o maior elemento da página esquerda
-                // removendo-o da página
+            // caso contrário, promove o maior elemento da página esquerda
+            // removendo-o da página
             else {
                 elemAux = pa.elementos.remove(pa.elementos.size() - 1);
                 pa.filhos.remove(pa.filhos.size() - 1);
@@ -490,7 +478,7 @@ public class ArvoreBMais<T extends RegistroArvoreBMais<T>> {
         // Obtém um endereço para a nova página (página excluída ou fim do arquivo)
         arquivo.seek(8);
         long end = arquivo.readLong();
-        if(end==-1) {
+        if (end == -1) {
             end = arquivo.length();
         } else { // reusa um endereço e atualiza a lista de excluídos no cabeçalho
             arquivo.seek(end);
@@ -557,7 +545,7 @@ public class ArvoreBMais<T extends RegistroArvoreBMais<T>> {
                 arquivo.writeLong(pa.filhos.get(0));
 
                 arquivo.seek(8);
-                long end = arquivo.readLong();  // cabeça da lista de páginas excluídas
+                long end = arquivo.readLong(); // cabeça da lista de páginas excluídas
                 pa.proxima = end;
                 arquivo.seek(8);
                 arquivo.writeLong(pagina);
@@ -672,7 +660,7 @@ public class ArvoreBMais<T extends RegistroArvoreBMais<T>> {
                 if (pFilho.filhos.get(0) == -1)
                     pFilho.elementos.add(0, pIrmaoEsq.elementos.remove(pIrmaoEsq.elementos.size() - 1));
 
-                    // Se não for folha, desce o elemento do pai
+                // Se não for folha, desce o elemento do pai
                 else
                     pFilho.elementos.add(0, pa.elementos.get(diminuido - 1));
 

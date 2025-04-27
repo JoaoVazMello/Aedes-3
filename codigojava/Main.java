@@ -100,8 +100,9 @@ public class Main {
           Game game = new Game(0, name, release, required, price, description, generes);
 
           // Chama o método para escrever o novo game no banco de dados
-          crud.create(game);
+          int id = crud.create(game);
           System.out.println("Jogo criado com sucesso");
+          System.out.println("id: " + id);
           break;
 
         // Opçao 2 = Ler um registro
