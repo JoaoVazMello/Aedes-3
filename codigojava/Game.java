@@ -53,6 +53,7 @@ public class Game implements Registro {
     for (String generos : objetoGame.Genres) {
       System.out.print(generos + ",");
     }
+    System.err.println("\n");
     System.out.println("==============================================================================");
     System.out.println("\n");
   }

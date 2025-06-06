@@ -1,6 +1,7 @@
 package codigojava;
 
 import codigojava.HASH.CrudHash;
+import codigojava.ListaInvertida.ListaArquivo;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -15,8 +16,7 @@ public class Main {
 
     Scanner leitor = new Scanner(System.in);
     CrudHash<Game> crud = new CrudHash<>("games", Game.class.getConstructor(), 5);
-
-    String nomeBase;
+    ListaArquivo listainvertida = new ListaArquivo();
     int opcao = 0;
 
     // Laço de repetiçao para o menu
@@ -29,28 +29,30 @@ public class Main {
       System.out.println(" 2 - Read - Passe o atributo que deseja utilizar para ler ");
       System.out.println(" 3 - Update - Passe o ID do game que deseja atualizar ");
       System.out.println(" 4 - Delete - Passe algum atributo que deseja apagar ");
-      System.out.println(" 5 - Sair");
+      System.out.println(" 5 - Text Read - Digite algum termo para ser buscado na base ");
+      System.out.println(" 6 - Sair ");
       System.out.println("==========================================================================");
 
       // Leitura do valor
       System.out.print("Digite a opçao que deseja: ");
       opcao = leitor.nextInt();
+
       leitor.nextLine();
+
       // Processamento da opçao selecionada
       switch (opcao) {
         // Opçao 0 = Carregamento da base de dados;
         case 0:
 
-          // Coleta o nome da base de dados
-          System.out.print("Digite o nome da base de dados: ");
-          nomeBase = leitor.next();
-
           // Inicializador do leitorCSV
-          LeitorCSV leitorCSV = new LeitorCSV(nomeBase);
+          LeitorCSV leitorCSV = new LeitorCSV();
           List<Game> ListaDeGames = leitorCSV.LerCsv();
 
           // Chamar o objeto Crud para realizar a operaçao de escrever o binario
           crud.create(ListaDeGames);
+
+          // Criar o arquivo da lista
+          listainvertida.LerBaseComHash();
 
           break;
 
@@ -220,11 +222,17 @@ public class Main {
             System.out.println("Game com ID " + idDelete + " não encontrado.");
           break;
 
+        // Opçao 5 = Busca por texto
         case 5:
-          System.out.println("Ordenação");
+          String texto;
+
+          System.out.println("Digite o que deseja buscar: ");
+          texto = leitor.nextLine();
+
+          listainvertida.BuscarArquivoDeLista(texto);          
 
           break;
-        // Opçao 5 = Sair do sistema
+
         case 6:
           System.out.println("\n");
           System.out.println("=====================================");

@@ -20,10 +20,10 @@ public class LeitorCSV {
     return listaAtributos;
   }
 
-  public LeitorCSV(String nomeBase) {
-//    path = "../BaseDeDados/" + nomeBase;
+  public LeitorCSV() {
+    path = "C:\\Users\\joaoe\\OneDrive\\Desktop\\TpAedes\\BaseDeDados/BaseDeDados.csv";
 
-     path = "/Users/pedrofelix/Aedes-3/BaseDeDados/BaseDeDados.csv";
+    //path = "/Users/pedrofelix/Aedes-3/BaseDeDados/BaseDeDados.csv";
   }
 
   // Metodo para trabalhar a lista do CSV
@@ -64,7 +64,6 @@ public class LeitorCSV {
 
   public ArrayList<Game> LerCsv() {
     // Vetor de Objetos Game para conseguir retornar para o Crud.java
-    // Devo implementar uma lista flexivel ???????? perguntar hayala
     ArrayList<Game> novGamelist = new ArrayList<Game>();
 
     try {
@@ -77,12 +76,11 @@ public class LeitorCSV {
       // Inicializa a linha com o buffer para pular a primeira
       String linha = buffer.readLine();
 
-      // Contador para testa com volume menor de dados
       int contador = 0;
 
       // Loop para percorrer todas as linhas do arquivo , contador para diminuir a
       // quantidade de testes;
-      while ((linha = buffer.readLine()) != null) {
+      while ((linha = buffer.readLine()) != null && contador < 100) {
 
         // Funçao que vai splitar a linha
         String[] lista = Splitador(linha);
@@ -111,11 +109,6 @@ public class LeitorCSV {
             ConverteLista(lista[6]));
 
         novGamelist.add(objGame);
-
-        // Mostrar Atributos carregados no objeto
-        // objGame.MostraAtributos(objGame);
-
-        // Contador para a quantidade de teste;
         contador++;
       }
 
