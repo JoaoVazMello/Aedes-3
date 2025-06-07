@@ -1,5 +1,6 @@
 package codigojava;
 
+import codigojava.CasamentoDePadraes.BoyerMoore;
 import codigojava.CasamentoDePadraes.KMP;
 import codigojava.Compressao.LZW.LZW;
 import codigojava.HASH.CrudHash;
@@ -40,6 +41,7 @@ public class Main {
             System.out.println(" 8 - Huffman - Para realizar a Compressão de Dados ");
             System.out.println(" 9 - Huffman -  Para realizar a Descompressão de Dados");
             System.out.println(" 10 - Busca por KMP");
+            System.out.println(" 11 - Busca por BoyerMoore");
             System.out.println(" 12 - Sair ");
             System.out.println("==========================================================================");
 
@@ -270,13 +272,32 @@ public class Main {
                     }
 
                     break;
+
+                case 11:
+                    System.out.println("Digite o texto que você deseja buscar");
+                    String pattern = leitor.nextLine();
+                    List<Integer> resultadoBoyer;
+
+                    byte[] msgBytesBoyer = Files.readAllBytes(Paths.get(crud.nomeArquivo));
+                    resultadoBoyer = BoyerMoore.search(msgBytesBoyer, pattern.getBytes());
+
+
+                    if (resultadoBoyer.isEmpty()) {
+                        System.out.println("Padrão não encontrado.");
+                    } else {
+                        System.out.println("Padrão encontrado nos índices: " + resultadoBoyer);
+                        for (int index : resultadoBoyer) {
+                            System.out.println("Ocorrência em " + index + ": " + new String(msgBytesBoyer, index, pattern.getBytes().length));
+                        }
+                    }
+                    break;
                 case 12:
                     System.out.println("\n");
                     System.out.println("=====================================");
                     System.out.println("=  Obrigado por utilizar o sistema  =");
                     System.out.println("=====================================");
                     System.out.println("\n");
-                    opcao = 11;
+                    opcao = 12;
                     break;
 
                 // Opçao invalida

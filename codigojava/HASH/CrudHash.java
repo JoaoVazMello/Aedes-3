@@ -14,7 +14,7 @@ import java.util.List;
 public class CrudHash<T extends Registro> {
     final int TAM_CABECALHO = 12;
     RandomAccessFile arquivo;
-    String nomeArquivo;
+    public String nomeArquivo;
     Constructor<T> construtor;
     HashExtensivel<ParIDEndereco> indiceDireto;
     ArvoreBMais<ParIDEnderecoArvore> arvoreBMais;

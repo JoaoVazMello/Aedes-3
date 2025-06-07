@@ -23,7 +23,7 @@ public class LeitorCSV {
   public LeitorCSV() {
     path = "C:\\Users\\joaoe\\OneDrive\\Desktop\\TpAedes\\BaseDeDados/BaseDeDados.csv";
 
-    //path = "/Users/pedrofelix/Aedes-3/BaseDeDados/BaseDeDados.csv";
+    path = "/Users/pedrofelix/Aedes-3/BaseDeDados/BaseDeDados.csv";
   }
 
   // Metodo para trabalhar a lista do CSV
@@ -80,7 +80,7 @@ public class LeitorCSV {
 
       // Loop para percorrer todas as linhas do arquivo , contador para diminuir a
       // quantidade de testes;
-      while ((linha = buffer.readLine()) != null && contador < 100) {
+      while ((linha = buffer.readLine()) != null && contador < 100  * 100) {
 
         // Funçao que vai splitar a linha
         String[] lista = Splitador(linha);
