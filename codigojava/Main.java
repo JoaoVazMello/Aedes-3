@@ -1,9 +1,12 @@
 package codigojava;
 
+import codigojava.CasamentoDePadraes.KMP;
 import codigojava.Compressao.LZW.LZW;
 import codigojava.HASH.CrudHash;
 import codigojava.ListaInvertida.ListaArquivo;
 
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +25,7 @@ public class Main {
         int opcao = 0;
 
         // Laço de repetiçao para o menu
-        while (opcao != 11) {
+        while (opcao != 12) {
 
             // Opçoes de menu para realizar as operaçoes do crud
             System.out.println("======================== Sistema de CRUD - Aedes3 ========================");
@@ -36,8 +39,8 @@ public class Main {
             System.out.println(" 7 - LZW -  Para realizar a Descompressão de Dados");
             System.out.println(" 8 - Huffman - Para realizar a Compressão de Dados ");
             System.out.println(" 9 - Huffman -  Para realizar a Descompressão de Dados");
-            System.out.println(" 10 - Casamento de Padrões- Digite algum termo para ser buscado na base ");
-            System.out.println(" 11 - Sair ");
+            System.out.println(" 10 - Busca por KMP");
+            System.out.println(" 12 - Sair ");
             System.out.println("==========================================================================");
 
             // Leitura do valor
@@ -146,10 +149,8 @@ public class Main {
                         }
                     } while (opcao == 4);
 
-                    if (gameResult != null)
-                        MostraAtributos(gameResult);
-                    else
-                        System.out.println("Game com ID " + idGame + " não encontrado.");
+                    if (gameResult != null) MostraAtributos(gameResult);
+                    else System.out.println("Game com ID " + idGame + " não encontrado.");
                     break;
 
                 // Opçao 3 = Atualizar um registro
@@ -204,9 +205,7 @@ public class Main {
                         }
 
                         // Cria o objeto Game com os dados recebidos
-                        Game gameUpdate = new Game(resultGame.getId(), nameGame, releaseGame,
-                                requiredGame, priceGame,
-                                descriptionGame, generesGame);
+                        Game gameUpdate = new Game(resultGame.getId(), nameGame, releaseGame, requiredGame, priceGame, descriptionGame, generesGame);
 
                         crud.update(gameUpdate);
                     } else {
@@ -223,8 +222,7 @@ public class Main {
                     var resultado = crud.delete(idDelete);
                     if (resultado) {
                         System.out.println("Game com ID " + idDelete + " deletado com sucesso.");
-                    } else
-                        System.out.println("Game com ID " + idDelete + " não encontrado.");
+                    } else System.out.println("Game com ID " + idDelete + " não encontrado.");
                     break;
 
                 // Opçao 5 = Busca por texto
@@ -239,13 +237,13 @@ public class Main {
                     break;
 
                 case 6:
-                    nomeArquivoCompactado = crud.nomeArquivo + "LZWCompressao" +".bd";
+                    nomeArquivoCompactado = crud.nomeArquivo + "LZWCompressao" + ".bd";
                     LZW.codificaArquivo(crud.nomeArquivo, nomeArquivoCompactado);
                     System.out.println("codificado");
                     break;
 
                 case 7:
-                    nomeArquivoCompactado = crud.nomeArquivo + "LZWCompressao" +".bd";
+                    nomeArquivoCompactado = crud.nomeArquivo + "LZWCompressao" + ".bd";
                     LZW.decodificaArquivo(nomeArquivoCompactado, crud.nomeArquivo);
                     System.out.println("descodificado");
                     break;
@@ -253,7 +251,26 @@ public class Main {
                 case 8:
                     break;
 
-                case 11:
+                case 10:
+                    System.out.println("Digite o texto que você deseja buscar");
+                    String palavra = leitor.nextLine();
+                    List<Integer> resultadoKMP;
+
+                    byte[] msgBytes = Files.readAllBytes(Paths.get(crud.nomeArquivo));
+                    resultadoKMP = KMP.search(msgBytes, palavra.getBytes());
+
+
+                    if (resultadoKMP.isEmpty()) {
+                        System.out.println("Padrão não encontrado.");
+                    } else {
+                        System.out.println("Padrão encontrado nos índices: " + resultadoKMP);
+                        for (int index : resultadoKMP) {
+                            System.out.println("Ocorrência em " + index + ": " + new String(msgBytes, index, palavra.getBytes().length));
+                        }
+                    }
+
+                    break;
+                case 12:
                     System.out.println("\n");
                     System.out.println("=====================================");
                     System.out.println("=  Obrigado por utilizar o sistema  =");
