@@ -6,10 +6,12 @@ import codigojava.Compressao.LZW.LZW;
 import codigojava.HASH.CrudHash;
 import codigojava.ListaInvertida.ListaArquivo;
 
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -18,10 +20,10 @@ import static codigojava.Game.MostraAtributos;
 public class Main {
 
     public static void main(String[] args) throws Exception {
-        String nomeArquivoCompactado;
         Scanner leitor = new Scanner(System.in);
         CrudHash<Game> crud = new CrudHash<>("games", Game.class.getConstructor(), 5);
         ListaArquivo listainvertida = new ListaArquivo();
+        String nomeArquivoCompactado = crud.nomeArquivo + "LZWCompressao" + ".bd";
 
         int opcao = 0;
 
@@ -239,14 +241,44 @@ public class Main {
                     break;
 
                 case 6:
+                    byte[] msgBytesLZW = Files.readAllBytes(Paths.get(crud.nomeArquivo));
                     nomeArquivoCompactado = crud.nomeArquivo + "LZWCompressao" + ".bd";
-                    LZW.codificaArquivo(crud.nomeArquivo, nomeArquivoCompactado);
+                    var compressed = LZW.compress(msgBytesLZW);
+
+                    try (DataOutputStream out = new DataOutputStream(new FileOutputStream(nomeArquivoCompactado))) {
+                        for (int code : compressed) {
+                            out.writeShort(code);
+                        }
+                        System.out.println("Arquivo comprimido gerado: " + nomeArquivoCompactado);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    // Tamanho do arquivo comprimido em bytes (2 bytes por código)
+                    int tamanhoComprimidoEmBytes = compressed.size() * 2;
+
+                    // Tamanho original
+                    int tamanhoOriginalEmBytes = msgBytesLZW.length;
+
+                    float eficiencia = 100 * (1 - (float) tamanhoComprimidoEmBytes / tamanhoOriginalEmBytes);
+                    System.out.println("Eficiência: " + eficiencia + "%");
+
                     System.out.println("codificado");
                     break;
 
                 case 7:
-                    nomeArquivoCompactado = crud.nomeArquivo + "LZWCompressao" + ".bd";
-                    LZW.decodificaArquivo(nomeArquivoCompactado, crud.nomeArquivo);
+                    List<Integer> compressedCodes = new ArrayList<>();
+                    try (DataInputStream in = new DataInputStream(new FileInputStream(nomeArquivoCompactado))) {
+                        while (in.available() >= 2) {
+                            int code = in.readUnsignedShort();
+                            compressedCodes.add(code);
+                        }
+                    }
+
+                    byte[] decompressed = LZW.decompress(compressedCodes);
+                    Files.write(Paths.get(crud.nomeArquivo), decompressed);
+                    System.out.println("Descompressão finalizada!");
+
                     System.out.println("descodificado");
                     break;
 

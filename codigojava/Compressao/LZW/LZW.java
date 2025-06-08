@@ -19,157 +19,88 @@ import codigojava.Compressao.VetorDeBits;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.util.ArrayList;
+import java.util.*;
 
 public class LZW {
 
-    public static final int BITS_POR_INDICE = 24;
+    // Compressão LZW para array de bytes -> lista de códigos (inteiros)
+    public static List<Integer> compress(byte[] input) {
+        Map<List<Byte>, Integer> dictionary = new HashMap<>();
 
-    public static void codificaArquivo(String arquivoOriginal, String arquivoCompactado) throws Exception {
-        File file = new File(arquivoOriginal);
-        byte[] msgBytes = new byte[(int) file.length()];
-        try (FileInputStream fis = new FileInputStream(file)) {
-            fis.read(msgBytes);
+        // Inicializa o dicionário com todos os bytes possíveis (0-255)
+        for (int i = 0; i < 256; i++) {
+            dictionary.put(Arrays.asList((byte) i), i);
         }
 
-        byte[] bytesCompactados = codifica(msgBytes);
+        List<Integer> result = new ArrayList<>();
+        List<Byte> w = new ArrayList<>();
+        int dictSize = 256;
 
-        try (FileOutputStream fos = new FileOutputStream(arquivoCompactado)) {
-            fos.write(bytesCompactados);
+        for (byte b : input) {
+            List<Byte> wb = new ArrayList<>(w);
+            wb.add(b);
+            if (dictionary.containsKey(wb)) {
+                w = wb;
+            } else {
+                result.add(dictionary.get(w));
+                dictionary.put(wb, dictSize++);
+                w = new ArrayList<>();
+                w.add(b);
+            }
         }
 
-        System.out.println("Arquivo original (" + msgBytes.length + " bytes): " + arquivoOriginal);
-        System.out.println("Arquivo compactado (" + bytesCompactados.length + " bytes): " + arquivoCompactado);
-        System.out.println("Eficiência: " + (100 * (1 - (float) bytesCompactados.length / (float) msgBytes.length)) + "%");
+        if (!w.isEmpty()) {
+            result.add(dictionary.get(w));
+        }
+
+        return result;
     }
 
-    public static void decodificaArquivo(String arquivoCompactado, String arquivoDescompactado) throws Exception {
-        File file = new File(arquivoCompactado);
-        byte[] bytesCompactados = new byte[(int) file.length()];
-        try (FileInputStream fis = new FileInputStream(file)) {
-            fis.read(bytesCompactados);
+    // Descompressão LZW: lista de códigos -> array de bytes original
+    public static byte[] decompress(List<Integer> compressed) {
+        Map<Integer, List<Byte>> dictionary = new HashMap<>();
+
+        // Inicializa dicionário com bytes individuais
+        for (int i = 0; i < 256; i++) {
+            dictionary.put(i, Arrays.asList((byte) i));
         }
 
-        byte[] msgBytes = decodifica(bytesCompactados);
+        int dictSize = 256;
 
-        try (FileOutputStream fos = new FileOutputStream(arquivoDescompactado)) {
-            fos.write(msgBytes);
-        }
+        Iterator<Integer> iter = compressed.iterator();
+        List<Byte> w = new ArrayList<>(dictionary.get(iter.next()));
+        List<Byte> result = new ArrayList<>(w);
 
-        System.out.println("Arquivo descompactado criado: " + arquivoDescompactado + " (" + msgBytes.length + " bytes)");
-    }
+        while (iter.hasNext()) {
+            int k = iter.next();
+            List<Byte> entry;
 
-    public static byte[] codifica(byte[] msgBytes) throws Exception {
-        ArrayList<ArrayList<Byte>> dicionario = new ArrayList<>();
-        ArrayList<Byte> vetorBytes;
-        int i, j;
-        byte b;
-        for (j = -128; j < 128; j++) {
-            b = (byte) j;
-            vetorBytes = new ArrayList<>();
-            vetorBytes.add(b);
-            dicionario.add(vetorBytes);
-        }
-
-        ArrayList<Integer> saida = new ArrayList<>();
-        i = 0;
-        int indice, ultimoIndice;
-
-        while (i < msgBytes.length) {
-            vetorBytes = new ArrayList<>();
-            b = msgBytes[i];
-            vetorBytes.add(b);
-            indice = dicionario.indexOf(vetorBytes);
-            ultimoIndice = indice;
-
-            while (indice != -1 && i < msgBytes.length - 1) {
-                i++;
-                b = msgBytes[i];
-                vetorBytes.add(b);
-                indice = dicionario.indexOf(vetorBytes);
-                if (indice != -1)
-                    ultimoIndice = indice;
+            if (dictionary.containsKey(k)) {
+                entry = dictionary.get(k);
+            } else if (k == dictSize) {
+                // Caso especial
+                List<Byte> copy = new ArrayList<>(w);
+                copy.add(w.get(0));
+                entry = copy;
+            } else {
+                throw new IllegalArgumentException("Código inválido: " + k);
             }
 
-            if (indice == -1)
-                i--;
+            result.addAll(entry);
 
-            // Adiciona o último índice encontrado à saída!
-            saida.add(ultimoIndice);
+            // Adiciona nova sequência ao dicionário
+            List<Byte> newEntry = new ArrayList<>(w);
+            newEntry.add(entry.get(0));
+            dictionary.put(dictSize++, newEntry);
 
-            if (dicionario.size() < (Math.pow(2, BITS_POR_INDICE) - 1) && indice == -1)
-                dicionario.add(vetorBytes);
+            w = entry;
         }
 
-        VetorDeBits bits = new VetorDeBits(saida.size() * BITS_POR_INDICE);
-        int l = saida.size() * BITS_POR_INDICE - 1;
-        for (i = saida.size() - 1; i >= 0; i--) {
-            int n = saida.get(i);
-            for (int m = 0; m < BITS_POR_INDICE; m++) {
-                if (n % 2 == 0)
-                    bits.clear(l);
-                else
-                    bits.set(l);
-                l--;
-                n /= 2;
-            }
+        // Converte List<Byte> para byte[]
+        byte[] output = new byte[result.size()];
+        for (int i = 0; i < result.size(); i++) {
+            output[i] = result.get(i);
         }
-
-        System.out.println("Índices: ");
-        System.out.println(saida);
-        System.out.println("Vetor de bits: ");
-        System.out.println(bits);
-
-        return bits.toByteArray();
-    }
-
-
-    public static byte[] decodifica(byte[] msgCodificada) throws Exception {
-        VetorDeBits bits = new VetorDeBits(msgCodificada);
-        int i, j, k;
-        ArrayList<Integer> indices = new ArrayList<>();
-        k = 0;
-        for (i = 0; i < bits.length() / BITS_POR_INDICE; i++) {
-            int n = 0;
-            for (j = 0; j < BITS_POR_INDICE; j++) {
-                n = n * 2 + (bits.get(k++) ? 1 : 0);
-            }
-            indices.add(n);
-        }
-
-        ArrayList<Byte> vetorBytes;
-        ArrayList<Byte> msgBytes = new ArrayList<>();
-        ArrayList<ArrayList<Byte>> dicionario = new ArrayList<>();
-        byte b;
-        for (j = -128, i = 0; j < 128; j++, i++) {
-            b = (byte) j;
-            vetorBytes = new ArrayList<>();
-            vetorBytes.add(b);
-            dicionario.add(vetorBytes);
-        }
-
-        ArrayList<Byte> proximoVetorBytes;
-        i = 0;
-        while (i < indices.size()) {
-            vetorBytes = (ArrayList<Byte>) (dicionario.get(indices.get(i))).clone();
-
-            for (j = 0; j < vetorBytes.size(); j++)
-                msgBytes.add(vetorBytes.get(j));
-
-            if (dicionario.size() < (Math.pow(2, BITS_POR_INDICE) - 1))
-                dicionario.add(vetorBytes);
-
-            i++;
-            if (i < indices.size()) {
-                proximoVetorBytes = (ArrayList<Byte>) dicionario.get(indices.get(i));
-                vetorBytes.add(proximoVetorBytes.get(0));
-            }
-        }
-
-        byte[] msgVetorBytes = new byte[msgBytes.size()];
-        for (i = 0; i < msgBytes.size(); i++)
-            msgVetorBytes[i] = msgBytes.get(i);
-
-        return msgVetorBytes;
+        return output;
     }
 }
