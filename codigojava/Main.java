@@ -76,7 +76,7 @@ public class Main {
                     crud.create(ListaDeGames);
 
                     // Criar o arquivo da lista
-                    // listainvertida.LerBaseComHash();
+                    listainvertida.LerBaseComHash();
 
                     break;
 
