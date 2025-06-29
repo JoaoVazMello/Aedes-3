@@ -3,7 +3,9 @@ package codigojava;
 import codigojava.CasamentoDePadraes.BoyerMoore;
 import codigojava.CasamentoDePadraes.KMP;
 import codigojava.Compressao.LZW.LZW;
+import codigojava.Criptografia.RSA;
 import codigojava.HASH.CrudHash;
+import codigojava.Huffman.CompressaoGames;
 import codigojava.ListaInvertida.ListaArquivo;
 
 import java.io.*;
@@ -11,7 +13,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -24,11 +25,13 @@ public class Main {
         CrudHash<Game> crud = new CrudHash<>("games", Game.class.getConstructor(), 5);
         ListaArquivo listainvertida = new ListaArquivo();
         String nomeArquivoCompactado = crud.nomeArquivo + "LZWCompressao" + ".bd";
+        RSA criptografar = new RSA();
+        criptografar.salvarChavesTexto("minhaChave");
 
         int opcao = 0;
 
         // Laço de repetiçao para o menu
-        while (opcao != 12) {
+        while (opcao != 14) {
 
             // Opçoes de menu para realizar as operaçoes do crud
             System.out.println("======================== Sistema de CRUD - Aedes3 ========================");
@@ -41,10 +44,12 @@ public class Main {
             System.out.println(" 6 - LZW -  Para realizar a Compressão de Dados");
             System.out.println(" 7 - LZW -  Para realizar a Descompressão de Dados");
             System.out.println(" 8 - Huffman - Para realizar a Compressão de Dados ");
-            System.out.println(" 9 - Huffman -  Para realizar a Descompressão de Dados");
-            System.out.println(" 10 - Busca por KMP");
+            System.out.println(" 9 - Busca por KMP");
+            System.out.println(" 10 - Busca por BoyerMoore");
             System.out.println(" 11 - Busca por BoyerMoore");
-            System.out.println(" 12 - Sair ");
+            System.out.println(" 12 - Criptografia RSA");
+            System.out.println(" 13 - Descriptografia RSA");
+            System.out.println(" 14 - Sair ");
             System.out.println("==========================================================================");
 
             // Leitura do valor
@@ -283,6 +288,11 @@ public class Main {
                     break;
 
                 case 8:
+
+                    CompressaoGames compressaoGames = new CompressaoGames();
+                    
+                    compressaoGames.RodarCompressao();
+
                     break;
 
                 case 10:
@@ -323,13 +333,30 @@ public class Main {
                         }
                     }
                     break;
+
                 case 12:
+
+                    System.out.println("Criptografando...");
+                    criptografar.encryptBase();
+
+                    break;
+                case 13:
+                    
+                    System.out.println("Descriptografando... ");
+
+                    criptografar.descriptografarBase();
+
+                    break;
+
+                case 14:
+
                     System.out.println("\n");
                     System.out.println("=====================================");
                     System.out.println("=  Obrigado por utilizar o sistema  =");
                     System.out.println("=====================================");
                     System.out.println("\n");
-                    opcao = 12;
+                    opcao = 15;
+                
                     break;
 
                 // Opçao invalida

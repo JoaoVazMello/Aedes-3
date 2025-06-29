@@ -1,0 +1,1380 @@
+AppID: (descriptografado):
+1
+Name (criptografado): (descriptografado):
+Counter-Strike 2 
+Release (criptografado): (descriptografado):
+21/08/2012 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+0.0 
+Descricao (criptografado): (descriptografado):
+For over two decades, Counter-Strike has offered an elite competitive experience, one shaped by millions of players from across the globe. And now the next chapter in the CS story is about to begin. This is Counter-Strike 2. 
+Generos (criptografado): (descriptografado):
+Action Free to Play 
+AppID: (descriptografado):
+2
+Name (criptografado): (descriptografado):
+PUBG: BATTLEGROUNDS 
+Release (criptografado): (descriptografado):
+21/12/2017 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+0.0 
+Descricao (criptografado): (descriptografado):
+Play PUBG: BATTLEGROUNDS for free. Land on strategic locations, loot weapons and supplies, and survive to become the last team standing across various, diverse Battlegrounds. Squad up and join the Battlegrounds for the original Battle Royale experien 
+Generos (criptografado): (descriptografado):
+ActionAdventureMassively MultiplayerFree to Play 
+AppID: (descriptografado):
+3
+Name (criptografado): (descriptografado):
+Dota 2 
+Release (criptografado): (descriptografado):
+09/07/2013 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+0.0 
+Descricao (criptografado): (descriptografado):
+Every day, millions of players worldwide enter battle as one of over a hundred Dota heroes. And no matter if it's their 10th hour of play or 1,000th, there's always something new to discover. With regular updates that ensure a constant evolution of g 
+Generos (criptografado): (descriptografado):
+ActionStrategyFree to Play 
+AppID: (descriptografado):
+4
+Name (criptografado): (descriptografado):
+Grand Theft Auto V 
+Release (criptografado): (descriptografado):
+13/04/2015 
+Required (criptografado): (descriptografado):
+17 
+Price (criptografado): (descriptografado):
+0.0 
+Descricao (criptografado): (descriptografado):
+Grand Theft Auto V for PC offers players the option to explore the award-winning world of Los Santos and Blaine County in resolutions of up to 4k and beyond, as well as the chance to experience the game running at 60 frames per second. 
+Generos (criptografado): (descriptografado):
+ActionAdventure 
+AppID: (descriptografado):
+5
+Name (criptografado): (descriptografado):
+Tom Clancy's Rainbow Six® Siege 
+Release (criptografado): (descriptografado):
+01/12/2015 
+Required (criptografado): (descriptografado):
+17 
+Price (criptografado): (descriptografado):
+19.99 
+Descricao (criptografado): (descriptografado):
+Tom Clancy's Rainbow Six® Siege is an elite, tactical team-based shooter where superior planning and execution triumph. 
+Generos (criptografado): (descriptografado):
+Action 
+AppID: (descriptografado):
+6
+Name (criptografado): (descriptografado):
+Tom Clancy's Rainbow Six® Siege 
+Release (criptografado): (descriptografado):
+01/12/2015 
+Required (criptografado): (descriptografado):
+17 
+Price (criptografado): (descriptografado):
+19.99 
+Descricao (criptografado): (descriptografado):
+Tom Clancy's Rainbow Six® Siege is an elite, tactical team-based shooter where superior planning and execution triumph. 
+Generos (criptografado): (descriptografado):
+Action 
+AppID: (descriptografado):
+7
+Name (criptografado): (descriptografado):
+Tom Clancy's Rainbow Six® Siege 
+Release (criptografado): (descriptografado):
+01/12/2015 
+Required (criptografado): (descriptografado):
+17 
+Price (criptografado): (descriptografado):
+19.99 
+Descricao (criptografado): (descriptografado):
+Tom Clancy's Rainbow Six® Siege is an elite, tactical team-based shooter where superior planning and execution triumph. 
+Generos (criptografado): (descriptografado):
+Action 
+AppID: (descriptografado):
+8
+Name (criptografado): (descriptografado):
+Tom Clancy's Rainbow Six® Siege 
+Release (criptografado): (descriptografado):
+01/12/2015 
+Required (criptografado): (descriptografado):
+17 
+Price (criptografado): (descriptografado):
+19.99 
+Descricao (criptografado): (descriptografado):
+Tom Clancy's Rainbow Six® Siege is an elite, tactical team-based shooter where superior planning and execution triumph. 
+Generos (criptografado): (descriptografado):
+Action 
+AppID: (descriptografado):
+9
+Name (criptografado): (descriptografado):
+Tom Clancy's Rainbow Six® Siege 
+Release (criptografado): (descriptografado):
+01/12/2015 
+Required (criptografado): (descriptografado):
+17 
+Price (criptografado): (descriptografado):
+19.99 
+Descricao (criptografado): (descriptografado):
+Tom Clancy's Rainbow Six® Siege is an elite, tactical team-based shooter where superior planning and execution triumph. 
+Generos (criptografado): (descriptografado):
+Action 
+AppID: (descriptografado):
+10
+Name (criptografado): (descriptografado):
+Team Fortress 2 
+Release (criptografado): (descriptografado):
+10/10/2007 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+0.0 
+Descricao (criptografado): (descriptografado):
+Nine distinct classes provide a broad range of tactical abilities and personalities. Constantly updated with new game modes, maps, equipment and, most importantly, hats! 
+Generos (criptografado): (descriptografado):
+ActionFree to Play 
+AppID: (descriptografado):
+11
+Name (criptografado): (descriptografado):
+Terraria 
+Release (criptografado): (descriptografado):
+16/05/2011 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+9.99 
+Descricao (criptografado): (descriptografado):
+Dig, fight, explore, build! Nothing is impossible in this action-packed adventure game. Four Pack also available! 
+Generos (criptografado): (descriptografado):
+ActionAdventureIndieRPG 
+AppID: (descriptografado):
+12
+Name (criptografado): (descriptografado):
+Garry's Mod 
+Release (criptografado): (descriptografado):
+29/11/2006 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+9.99 
+Descricao (criptografado): (descriptografado):
+Garry's Mod is a physics sandbox. There aren't any predefined aims or goals. We give you the tools and leave you to play. 
+Generos (criptografado): (descriptografado):
+CasualIndieSimulation 
+AppID: (descriptografado):
+13
+Name (criptografado): (descriptografado):
+Rust 
+Release (criptografado): (descriptografado):
+08/02/2018 
+Required (criptografado): (descriptografado):
+17 
+Price (criptografado): (descriptografado):
+39.99 
+Descricao (criptografado): (descriptografado):
+The only aim in Rust is to survive. Everything wants you to die - the island°s wildlife and other inhabitants, the environment, other survivors. Do whatever it takes to last another night. 
+Generos (criptografado): (descriptografado):
+ActionAdventureIndieMassively MultiplayerRPG 
+AppID: (descriptografado):
+14
+Name (criptografado): (descriptografado):
+Apex LegendsC 
+Release (criptografado): (descriptografado):
+04/11/2020 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+0.0 
+Descricao (criptografado): (descriptografado):
+Apex Legends is the award-winning, free-to-play Hero Shooter from Respawn Entertainment. Master an ever-growing roster of legendary characters with powerful abilities, and experience strategic squad play and innovative gameplay in the next evolution 
+Generos (criptografado): (descriptografado):
+ActionAdventureFree to Play 
+AppID: (descriptografado):
+15
+Name (criptografado): (descriptografado):
+The Witcher® 3: Wild Hunt 
+Release (criptografado): (descriptografado):
+18/05/2015 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+9.99 
+Descricao (criptografado): (descriptografado):
+You are Geralt of Rivia, mercenary monster slayer. Before you stands a war-torn, monster-infested continent you can explore at will. Your current contract? Tracking down Ciri « the Child of Prophecy, a living weapon that can alter the shape of the wo 
+Generos (criptografado): (descriptografado):
+RPG 
+AppID: (descriptografado):
+16
+Name (criptografado): (descriptografado):
+Cyberpunk 2077 
+Release (criptografado): (descriptografado):
+09/12/2020 
+Required (criptografado): (descriptografado):
+17 
+Price (criptografado): (descriptografado):
+29.99 
+Descricao (criptografado): (descriptografado):
+Cyberpunk 2077 is an open-world, action-adventure RPG set in the dark future of Night City « a dangerous megalopolis obsessed with power, glamor, and ceaseless body modification. 
+Generos (criptografado): (descriptografado):
+RPG 
+AppID: (descriptografado):
+17
+Name (criptografado): (descriptografado):
+Left 4 Dead 2 
+Release (criptografado): (descriptografado):
+16/11/2009 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+9.99 
+Descricao (criptografado): (descriptografado):
+Set in the zombie apocalypse, Left 4 Dead 2 (L4D2) is the highly anticipated sequel to the award-winning Left 4 Dead, the #1 co-op game of 2008. This co-operative action horror FPS takes you and your friends through the cities, swamps and cemeteries 
+Generos (criptografado): (descriptografado):
+Action 
+AppID: (descriptografado):
+18
+Name (criptografado): (descriptografado):
+HELLDIVERSC 2 
+Release (criptografado): (descriptografado):
+08/02/2024 
+Required (criptografado): (descriptografado):
+17 
+Price (criptografado): (descriptografado):
+39.99 
+Descricao (criptografado): (descriptografado):
+The Galaxy°s Last Line of Offence. Enlist in the Helldivers and join the fight for freedom across a hostile galaxy in a fast, frantic, and ferocious third-person shooter. 
+Generos (criptografado): (descriptografado):
+Action 
+AppID: (descriptografado):
+19
+Name (criptografado): (descriptografado):
+BACKGAMMON Playtest 
+Release (criptografado): (descriptografado):
+10/10/2023 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+0.0 
+Descricao (criptografado): (descriptografado):
+nan 
+Generos (criptografado): (descriptografado):
+AppID: (descriptografado):
+20
+Name (criptografado): (descriptografado):
+ELDEN RING 
+Release (criptografado): (descriptografado):
+24/02/2022 
+Required (criptografado): (descriptografado):
+16 
+Price (criptografado): (descriptografado):
+59.99 
+Descricao (criptografado): (descriptografado):
+THE NEW FANTASY ACTION RPG. Rise, Tarnished, and be guided by grace to brandish the power of the Elden Ring and become an Elden Lord in the Lands Between. 
+Generos (criptografado): (descriptografado):
+ActionRPG 
+AppID: (descriptografado):
+21
+Name (criptografado): (descriptografado):
+Stardew Valley 
+Release (criptografado): (descriptografado):
+26/02/2016 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+14.99 
+Descricao (criptografado): (descriptografado):
+You've inherited your grandfather's old farm plot in Stardew Valley. Armed with hand-me-down tools and a few coins, you set out to begin your new life. Can you learn to live off the land and turn these overgrown fields into a thriving home? 
+Generos (criptografado): (descriptografado):
+IndieRPGSimulation 
+AppID: (descriptografado):
+22
+Name (criptografado): (descriptografado):
+Among Us 
+Release (criptografado): (descriptografado):
+16/11/2018 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+4.99 
+Descricao (criptografado): (descriptografado):
+An online and local party game of teamwork and betrayal for 4-15 players...in space! 
+Generos (criptografado): (descriptografado):
+Casual 
+AppID: (descriptografado):
+23
+Name (criptografado): (descriptografado):
+Destiny 2 
+Release (criptografado): (descriptografado):
+01/10/2019 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+0.0 
+Descricao (criptografado): (descriptografado):
+Destiny 2 is an action MMO with a single evolving world that you and your friends can join anytime, anywhere, absolutely free. 
+Generos (criptografado): (descriptografado):
+ActionAdventureFree to Play 
+AppID: (descriptografado):
+24
+Name (criptografado): (descriptografado):
+Warframe 
+Release (criptografado): (descriptografado):
+25/03/2013 
+Required (criptografado): (descriptografado):
+17 
+Price (criptografado): (descriptografado):
+0.0 
+Descricao (criptografado): (descriptografado):
+Awaken as an unstoppable warrior and battle alongside your friends in this story-driven free-to-play online action game 
+Generos (criptografado): (descriptografado):
+ActionRPGFree to Play 
+AppID: (descriptografado):
+25
+Name (criptografado): (descriptografado):
+Euro Truck Simulator 2 
+Release (criptografado): (descriptografado):
+12/10/2012 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+4.99 
+Descricao (criptografado): (descriptografado):
+Travel across Europe as king of the road, a trucker who delivers important cargo across impressive distances! With dozens of cities to explore, your endurance, skill and speed will all be pushed to their limits. 
+Generos (criptografado): (descriptografado):
+IndieSimulation 
+AppID: (descriptografado):
+26
+Name (criptografado): (descriptografado):
+Phasmophobia 
+Release (criptografado): (descriptografado):
+18/09/2020 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+13.99 
+Descricao (criptografado): (descriptografado):
+Phasmophobia is a 4 player online co-op psychological horror. Paranormal activity is on the rise and it°s up to you and your team to use all the ghost-hunting equipment at your disposal in order to gather as much evidence as you can. 
+Generos (criptografado): (descriptografado):
+ActionIndieEarly Access 
+AppID: (descriptografado):
+27
+Name (criptografado): (descriptografado):
+Baldur's Gate 3 
+Release (criptografado): (descriptografado):
+03/08/2023 
+Required (criptografado): (descriptografado):
+17 
+Price (criptografado): (descriptografado):
+50.99 
+Descricao (criptografado): (descriptografado):
+"Baldur°s Gate 3 is a story-rich, party-based RPG set in the universe of Dungeons &amp 
+Generos (criptografado): (descriptografado):
+Dragonswhere your choices shape a tale of fellowship and betrayalsurvival and sacrificeand the lure of absolute power." 
+AppID: (descriptografado):
+28
+Name (criptografado): (descriptografado):
+Unturned 
+Release (criptografado): (descriptografado):
+07/07/2017 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+0.0 
+Descricao (criptografado): (descriptografado):
+You're a survivor in the zombie infested ruins of society, and must work with your friends and forge alliances to remain among the living. 
+Generos (criptografado): (descriptografado):
+ActionAdventureCasualIndieFree to Play 
+AppID: (descriptografado):
+29
+Name (criptografado): (descriptografado):
+Red Dead Redemption 2 
+Release (criptografado): (descriptografado):
+05/12/2019 
+Required (criptografado): (descriptografado):
+17 
+Price (criptografado): (descriptografado):
+59.99 
+Descricao (criptografado): (descriptografado):
+Winner of over 175 Game of the Year Awards and recipient of over 250 perfect scores, RDR2 is the epic tale of outlaw Arthur Morgan and the infamous Van der Linde gang, on the run across America at the dawn of the modern age. Also includes access to t 
+Generos (criptografado): (descriptografado):
+ActionAdventure 
+AppID: (descriptografado):
+30
+Name (criptografado): (descriptografado):
+Dead by Daylight 
+Release (criptografado): (descriptografado):
+14/06/2016 
+Required (criptografado): (descriptografado):
+17 
+Price (criptografado): (descriptografado):
+19.99 
+Descricao (criptografado): (descriptografado):
+Dead by Daylight is a multiplayer (4vs1) horror game where one player takes on the role of the savage Killer, and the other four players play as Survivors, trying to escape the Killer and avoid being caught and killed. 
+Generos (criptografado): (descriptografado):
+Action 
+AppID: (descriptografado):
+31
+Name (criptografado): (descriptografado):
+ARK: Survival Evolved 
+Release (criptografado): (descriptografado):
+27/08/2017 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+14.99 
+Descricao (criptografado): (descriptografado):
+Stranded on the shores of a mysterious island, you must learn to survive. Use your cunning to kill or tame the primeval creatures roaming the land, and encounter other players to survive, dominate... and escape! 
+Generos (criptografado): (descriptografado):
+ActionAdventureIndieMassively MultiplayerRPG 
+AppID: (descriptografado):
+32
+Name (criptografado): (descriptografado):
+War Thunder 
+Release (criptografado): (descriptografado):
+15/08/2013 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+0.0 
+Descricao (criptografado): (descriptografado):
+War Thunder is the most comprehensive free-to-play, cross-platform, MMO military game dedicated to aviation, armoured vehicles, and naval craft, from the early 20th century to the most advanced modern combat units. Join now and take part in major bat 
+Generos (criptografado): (descriptografado):
+ActionMassively MultiplayerSimulationFree to Play 
+AppID: (descriptografado):
+33
+Name (criptografado): (descriptografado):
+Fall Guys 
+Release (criptografado): (descriptografado):
+03/08/2020 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+0.0 
+Descricao (criptografado): (descriptografado):
+Fall Guys is a free, cross-platform massively multiplayer party royale game. Clumsily compete in absurd obstacle courses with friends or build your very own chaotic course to share with the community. 
+Generos (criptografado): (descriptografado):
+ActionCasualIndieMassively MultiplayerSports 
+AppID: (descriptografado):
+34
+Name (criptografado): (descriptografado):
+The Forest 
+Release (criptografado): (descriptografado):
+30/04/2018 
+Required (criptografado): (descriptografado):
+18 
+Price (criptografado): (descriptografado):
+19.99 
+Descricao (criptografado): (descriptografado):
+As the lone survivor of a passenger jet crash, you find yourself in a mysterious forest battling to stay alive against a society of cannibalistic mutants. Build, explore, survive in this terrifying first person survival horror simulator. 
+Generos (criptografado): (descriptografado):
+ActionAdventureIndieSimulation 
+AppID: (descriptografado):
+35
+Name (criptografado): (descriptografado):
+PAYDAY 2 
+Release (criptografado): (descriptografado):
+13/08/2013 
+Required (criptografado): (descriptografado):
+18 
+Price (criptografado): (descriptografado):
+9.99 
+Descricao (criptografado): (descriptografado):
+PAYDAY 2 is an action-packed, four-player co-op shooter that once again lets gamers don the masks of the original PAYDAY crew - Dallas, Hoxton, Wolf and Chains - as they descend on Washington DC for an epic crime spree. 
+Generos (criptografado): (descriptografado):
+ActionRPG 
+AppID: (descriptografado):
+36
+Name (criptografado): (descriptografado):
+Rocket League® 
+Release (criptografado): (descriptografado):
+06/07/2015 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+0.0 
+Descricao (criptografado): (descriptografado):
+Rocket League is a high-powered hybrid of arcade-style soccer and vehicular mayhem with easy-to-understand controls and fluid, physics-driven competition. Rocket League includes casual and competitive Online Matches, a fully-featured offline Season M 
+Generos (criptografado): (descriptografado):
+ActionIndieRacingSports 
+AppID: (descriptografado):
+37
+Name (criptografado): (descriptografado):
+Valheim 
+Release (criptografado): (descriptografado):
+02/02/2021 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+9.99 
+Descricao (criptografado): (descriptografado):
+A brutal exploration and survival game for 1-10 players, set in a procedurally-generated purgatory inspired by viking culture. Battle, build, and conquer your way to a saga worthy of Odin°s patronage! 
+Generos (criptografado): (descriptografado):
+ActionAdventureIndieRPGEarly Access 
+AppID: (descriptografado):
+38
+Name (criptografado): (descriptografado):
+Brawlhalla 
+Release (criptografado): (descriptografado):
+17/10/2017 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+0.0 
+Descricao (criptografado): (descriptografado):
+An epic platform fighter for up to 8 players online or local. Try casual free-for-alls, ranked matches, or invite friends to a private room. And it's free! Play cross-platform with millions of players on PlayStation, Xbox, Nintendo Switch, iOS, Andro 
+Generos (criptografado): (descriptografado):
+ActionIndieFree to Play 
+AppID: (descriptografado):
+39
+Name (criptografado): (descriptografado):
+Paladins® 
+Release (criptografado): (descriptografado):
+08/05/2018 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+0.0 
+Descricao (criptografado): (descriptografado):
+Paladins is the ultimate fantasy team-based shooter experience, with over 50 customizable Champions fighting in 5v5 action across a diverse Realm of modes and maps! 
+Generos (criptografado): (descriptografado):
+ActionAdventureMassively MultiplayerStrategyFree to Play 
+AppID: (descriptografado):
+40
+Name (criptografado): (descriptografado):
+Geometry Dash 
+Release (criptografado): (descriptografado):
+22/12/2014 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+4.99 
+Descricao (criptografado): (descriptografado):
+Jump and fly your way through danger in this rhythm-based action platformer! 
+Generos (criptografado): (descriptografado):
+ActionIndie 
+AppID: (descriptografado):
+41
+Name (criptografado): (descriptografado):
+Portal 2 
+Release (criptografado): (descriptografado):
+18/04/2011 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+9.99 
+Descricao (criptografado): (descriptografado):
+The 'Perpetual Testing Initiative' has been expanded to allow you to design co-op puzzles for you and your friends! 
+Generos (criptografado): (descriptografado):
+ActionAdventure 
+AppID: (descriptografado):
+42
+Name (criptografado): (descriptografado):
+Portal 2 
+Release (criptografado): (descriptografado):
+18/04/2011 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+9.99 
+Descricao (criptografado): (descriptografado):
+The 'Perpetual Testing Initiative' has been expanded to allow you to design co-op puzzles for you and your friends! 
+Generos (criptografado): (descriptografado):
+ActionAdventure 
+AppID: (descriptografado):
+43
+Name (criptografado): (descriptografado):
+DayZ 
+Release (criptografado): (descriptografado):
+13/12/2018 
+Required (criptografado): (descriptografado):
+17 
+Price (criptografado): (descriptografado):
+26.99 
+Descricao (criptografado): (descriptografado):
+How long can you survive a post-apocalyptic world? A land overrun with an infected 'zombie' population, where you compete with other survivors for limited resources. Will you team up with strangers and stay strong together? Or play as a lone wolf to 
+Generos (criptografado): (descriptografado):
+ActionAdventureMassively Multiplayer 
+AppID: (descriptografado):
+44
+Name (criptografado): (descriptografado):
+Lethal Company 
+Release (criptografado): (descriptografado):
+23/10/2023 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+9.99 
+Descricao (criptografado): (descriptografado):
+A co-op horror about scavenging at abandoned moons to sell scrap to the Company. 
+Generos (criptografado): (descriptografado):
+ActionAdventureIndieEarly Access 
+AppID: (descriptografado):
+45
+Name (criptografado): (descriptografado):
+Call of Duty® 
+Release (criptografado): (descriptografado):
+27/10/2022 
+Required (criptografado): (descriptografado):
+18 
+Price (criptografado): (descriptografado):
+0.0 
+Descricao (criptografado): (descriptografado):
+Welcome to Call of Duty® HQ, the home of Call of Duty®: Modern Warfare® III, Call of Duty®: Modern Warfare® II and WarzoneC. 
+Generos (criptografado): (descriptografado):
+Action 
+AppID: (descriptografado):
+46
+Name (criptografado): (descriptografado):
+Hollow Knight 
+Release (criptografado): (descriptografado):
+24/02/2017 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+14.99 
+Descricao (criptografado): (descriptografado):
+Forge your own path in Hollow Knight! An epic action adventure through a vast ruined kingdom of insects and heroes. Explore twisting caverns, battle tainted creatures and befriend bizarre bugs, all in a classic, hand-drawn 2D style. 
+Generos (criptografado): (descriptografado):
+ActionAdventureIndie 
+AppID: (descriptografado):
+47
+Name (criptografado): (descriptografado):
+Don't Starve Together 
+Release (criptografado): (descriptografado):
+21/04/2016 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+14.99 
+Descricao (criptografado): (descriptografado):
+Fight, Farm, Build and Explore Together in the standalone multiplayer expansion to the uncompromising wilderness survival game, Don't Starve. 
+Generos (criptografado): (descriptografado):
+ActionAdventureIndieRPGSimulationStrategy 
+AppID: (descriptografado):
+48
+Name (criptografado): (descriptografado):
+Dying Light 
+Release (criptografado): (descriptografado):
+15/07/2021 
+Required (criptografado): (descriptografado):
+17 
+Price (criptografado): (descriptografado):
+2.99 
+Descricao (criptografado): (descriptografado):
+First-person action survival game set in a post-apocalyptic open world overrun by flesh-hungry zombies. Roam a city devastated by a mysterious virus epidemic. Scavenge for supplies, craft weapons, and face hordes of the infected. 
+Generos (criptografado): (descriptografado):
+ActionRPG 
+AppID: (descriptografado):
+49
+Name (criptografado): (descriptografado):
+Sea of Thieves: 2024 Edition 
+Release (criptografado): (descriptografado):
+03/06/2020 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+39.99 
+Descricao (criptografado): (descriptografado):
+Sea of Thieves is a smash-hit pirate adventure game, offering the quintessential pirate experience of plundering lost treasures, intense battles, vanquishing sea monsters and more. Dive in with this revised edition of the game, which includes access 
+Generos (criptografado): (descriptografado):
+ActionAdventure 
+AppID: (descriptografado):
+50
+Name (criptografado): (descriptografado):
+Bloons TD 6 
+Release (criptografado): (descriptografado):
+17/12/2018 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+4.89 
+Descricao (criptografado): (descriptografado):
+The Bloons are back and better than ever! Get ready for a massive 3D tower defense game designed to give you hours and hours of the best strategy gaming available. 
+Generos (criptografado): (descriptografado):
+Strategy 
+AppID: (descriptografado):
+51
+Name (criptografado): (descriptografado):
+Overwatch® 2 
+Release (criptografado): (descriptografado):
+10/08/2023 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+0.0 
+Descricao (criptografado): (descriptografado):
+Overwatch 2 is a critically acclaimed, team-based shooter game set in an optimistic future with an evolving roster of heroes. Team up with friends and jump in today. 
+Generos (criptografado): (descriptografado):
+ActionFree to Play 
+AppID: (descriptografado):
+52
+Name (criptografado): (descriptografado):
+Raft 
+Release (criptografado): (descriptografado):
+20/06/2022 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+19.99 
+Descricao (criptografado): (descriptografado):
+RaftC throws you and your friends into an epic oceanic adventure! Alone or together, players battle to survive a perilous voyage across a vast sea! Gather debris, scavenge reefs and build your own floating home, but be wary of the man-eating sharks! 
+Generos (criptografado): (descriptografado):
+AdventureIndieSimulation 
+AppID: (descriptografado):
+53
+Name (criptografado): (descriptografado):
+Monster Hunter: World 
+Release (criptografado): (descriptografado):
+08/08/2018 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+29.99 
+Descricao (criptografado): (descriptografado):
+Welcome to a new world! In Monster Hunter: World, the latest installment in the series, you can enjoy the ultimate hunting experience, using everything at your disposal to hunt monsters in a new world teeming with surprises and excitement. 
+Generos (criptografado): (descriptografado):
+Action 
+AppID: (descriptografado):
+54
+Name (criptografado): (descriptografado):
+The Binding of Isaac: Rebirth 
+Release (criptografado): (descriptografado):
+04/11/2014 
+Required (criptografado): (descriptografado):
+17 
+Price (criptografado): (descriptografado):
+14.99 
+Descricao (criptografado): (descriptografado):
+The Binding of Isaac: Rebirth is a randomly generated action RPG shooter with heavy Rogue-like elements. Following Isaac on his journey players will find bizarre treasures that change Isaac°s form giving him super human abilities and enabling him to 
+Generos (criptografado): (descriptografado):
+Action 
+AppID: (descriptografado):
+55
+Name (criptografado): (descriptografado):
+Palworld 
+Release (criptografado): (descriptografado):
+18/01/2024 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+29.99 
+Descricao (criptografado): (descriptografado):
+Fight, farm, build and work alongside mysterious creatures called 'Pals' in this completely new multiplayer, open world survival and crafting game! 
+Generos (criptografado): (descriptografado):
+ActionAdventureIndieRPGEarly Access 
+AppID: (descriptografado):
+56
+Name (criptografado): (descriptografado):
+DARK SOULSC III 
+Release (criptografado): (descriptografado):
+11/04/2016 
+Required (criptografado): (descriptografado):
+17 
+Price (criptografado): (descriptografado):
+59.99 
+Descricao (criptografado): (descriptografado):
+Dark Souls continues to push the boundaries with the latest, ambitious chapter in the critically-acclaimed and genre-defining series. Prepare yourself and Embrace The Darkness! 
+Generos (criptografado): (descriptografado):
+Action 
+AppID: (descriptografado):
+57
+Name (criptografado): (descriptografado):
+Subnautica 
+Release (criptografado): (descriptografado):
+23/01/2018 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+29.99 
+Descricao (criptografado): (descriptografado):
+Descend into the depths of an alien underwater world filled with wonder and peril. Craft equipment, pilot submarines and out-smart wildlife to explore lush coral reefs, volcanoes, cave systems, and more - all while trying to survive. 
+Generos (criptografado): (descriptografado):
+AdventureIndie 
+AppID: (descriptografado):
+58
+Name (criptografado): (descriptografado):
+Fallout 4 
+Release (criptografado): (descriptografado):
+09/11/2015 
+Required (criptografado): (descriptografado):
+17 
+Price (criptografado): (descriptografado):
+19.99 
+Descricao (criptografado): (descriptografado):
+Bethesda Game Studios, the award-winning creators of Fallout 3 and The Elder Scrolls V: Skyrim, welcome you to the world of Fallout 4 ª their most ambitious game ever, and the next generation of open-world gaming. 
+Generos (criptografado): (descriptografado):
+RPG 
+AppID: (descriptografado):
+59
+Name (criptografado): (descriptografado):
+Hades 
+Release (criptografado): (descriptografado):
+17/09/2020 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+24.99 
+Descricao (criptografado): (descriptografado):
+Defy the god of the dead as you hack and slash out of the Underworld in this rogue-like dungeon crawler from the creators of Bastion, Transistor, and Pyre. 
+Generos (criptografado): (descriptografado):
+ActionIndieRPG 
+AppID: (descriptografado):
+60
+Name (criptografado): (descriptografado):
+New World 
+Release (criptografado): (descriptografado):
+28/09/2021 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+39.99 
+Descricao (criptografado): (descriptografado):
+Explore a thrilling, open-world MMO filled with danger and opportunity where you'll forge a new destiny on the supernatural island of Aeternum. 
+Generos (criptografado): (descriptografado):
+ActionAdventureMassively MultiplayerRPG 
+AppID: (descriptografado):
+61
+Name (criptografado): (descriptografado):
+New World Playtest 
+Release (criptografado): (descriptografado):
+08/09/2021 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+0.0 
+Descricao (criptografado): (descriptografado):
+nan 
+Generos (criptografado): (descriptografado):
+AppID: (descriptografado):
+62
+Name (criptografado): (descriptografado):
+Deep Rock Galactic 
+Release (criptografado): (descriptografado):
+13/05/2020 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+29.99 
+Descricao (criptografado): (descriptografado):
+Deep Rock Galactic is a 1-4 player co-op FPS featuring badass space Dwarves, 100% destructible environments, procedurally-generated caves, and endless hordes of alien monsters. 
+Generos (criptografado): (descriptografado):
+Action 
+AppID: (descriptografado):
+63
+Name (criptografado): (descriptografado):
+People Playground 
+Release (criptografado): (descriptografado):
+23/07/2019 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+9.99 
+Descricao (criptografado): (descriptografado):
+Shoot, stab, burn, poison, tear, vaporise, or crush ragdolls in a large open space. 
+Generos (criptografado): (descriptografado):
+ActionCasualIndieSimulation 
+AppID: (descriptografado):
+64
+Name (criptografado): (descriptografado):
+BeamNG.drive 
+Release (criptografado): (descriptografado):
+29/05/2015 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+24.99 
+Descricao (criptografado): (descriptografado):
+A dynamic soft-body physics vehicle simulator capable of doing just about anything. 
+Generos (criptografado): (descriptografado):
+RacingSimulationEarly Access 
+AppID: (descriptografado):
+65
+Name (criptografado): (descriptografado):
+No Man's Sky 
+Release (criptografado): (descriptografado):
+12/08/2016 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+59.99 
+Descricao (criptografado): (descriptografado):
+No Man's Sky is a game about exploration and survival in an infinite procedurally generated universe. 
+Generos (criptografado): (descriptografado):
+ActionAdventure 
+AppID: (descriptografado):
+66
+Name (criptografado): (descriptografado):
+Project Zomboid 
+Release (criptografado): (descriptografado):
+08/11/2013 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+19.99 
+Descricao (criptografado): (descriptografado):
+Project Zomboid is the ultimate in zombie survival. Alone or in MP: you loot, build, craft, fight, farm and fish in a struggle to survive. A hardcore RPG skillset, a vast map, massively customisable sandbox and a cute tutorial raccoon await the unwar 
+Generos (criptografado): (descriptografado):
+IndieRPGSimulationEarly Access 
+AppID: (descriptografado):
+67
+Name (criptografado): (descriptografado):
+NARAKA: BLADEPOINT Playtest 
+Release (criptografado): (descriptografado):
+16/04/2021 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+0.0 
+Descricao (criptografado): (descriptografado):
+nan 
+Generos (criptografado): (descriptografado):
+AppID: (descriptografado):
+68
+Name (criptografado): (descriptografado):
+NARAKA: BLADEPOINT 
+Release (criptografado): (descriptografado):
+11/08/2021 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+0.0 
+Descricao (criptografado): (descriptografado):
+"Dive into the legends of the Far East in NARAKA: BLADEPOINT 
+Generos (criptografado): (descriptografado):
+team up with friends in fast-paced melee fights for a Battle Royale experience unlike any other. Find your playstyle with a varied cast of heroes with unique skills. More than 20 million pl" 
+AppID: (descriptografado):
+69
+Name (criptografado): (descriptografado):
+Sid Meier°s Civilization® VI 
+Release (criptografado): (descriptografado):
+20/10/2016 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+59.99 
+Descricao (criptografado): (descriptografado):
+Civilization VI is the newest installment in the award winning Civilization Franchise. Expand your empire, advance your culture and go head-to-head against history°s greatest leaders. Will your civilization stand the test of time? 
+Generos (criptografado): (descriptografado):
+Strategy 
+AppID: (descriptografado):
+70
+Name (criptografado): (descriptografado):
+Path of Exile 
+Release (criptografado): (descriptografado):
+23/10/2013 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+0.0 
+Descricao (criptografado): (descriptografado):
+You are an Exile, struggling to survive on the dark continent of Wraeclast, as you fight to earn power that will allow you to exact your revenge against those who wronged you. Path of Exile is an online Action RPG set in a dark fantasy world. The gam 
+Generos (criptografado): (descriptografado):
+ActionAdventureIndieMassively MultiplayerRPGFree to Play 
+AppID: (descriptografado):
+71
+Name (criptografado): (descriptografado):
+Vampire Survivors 
+Release (criptografado): (descriptografado):
+20/10/2022 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+4.99 
+Descricao (criptografado): (descriptografado):
+Mow down thousands of night creatures and survive until dawn! Vampire Survivors is a gothic horror casual game with rogue-lite elements, where your choices can allow you to quickly snowball against the hundreds of monsters that get thrown at you. 
+Generos (criptografado): (descriptografado):
+ActionCasualIndieRPG 
+AppID: (descriptografado):
+72
+Name (criptografado): (descriptografado):
+VRChat 
+Release (criptografado): (descriptografado):
+01/02/2017 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+0.0 
+Descricao (criptografado): (descriptografado):
+Join our growing community as you explore, play, and help craft the future of social VR. Create worlds and custom avatars. Welcome to VRChat. 
+Generos (criptografado): (descriptografado):
+AdventureCasualMassively MultiplayerSimulationSportsFree to PlayEarly Access 
+AppID: (descriptografado):
+73
+Name (criptografado): (descriptografado):
+7 Days to Die 
+Release (criptografado): (descriptografado):
+13/12/2013 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+24.99 
+Descricao (criptografado): (descriptografado):
+7 Days to Die is an open-world game that is a unique combination of first-person shooter, survival horror, tower defense, and role-playing games. Play the definitive zombie survival sandbox RPG that came first. Navezgane awaits! 
+Generos (criptografado): (descriptografado):
+ActionAdventureIndieRPGSimulationStrategyEarly Access 
+AppID: (descriptografado):
+74
+Name (criptografado): (descriptografado):
+Hearts of Iron IV 
+Release (criptografado): (descriptografado):
+06/06/2016 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+14.99 
+Descricao (criptografado): (descriptografado):
+"Victory is at your fingertips! Your ability to lead your nation is your supreme weapon, the strategy game Hearts of Iron IV lets you take command of any nation in World War II 
+Generos (criptografado): (descriptografado):
+the most engaging conflict in world history." 
+AppID: (descriptografado):
+75
+Name (criptografado): (descriptografado):
+Halo: The Master Chief Collection 
+Release (criptografado): (descriptografado):
+03/12/2019 
+Required (criptografado): (descriptografado):
+18 
+Price (criptografado): (descriptografado):
+39.99 
+Descricao (criptografado): (descriptografado):
+The Master Chief°s iconic journey includes six games, built for PC and collected in a single integrated experience. Whether you°re a long-time fan or meeting Spartan 117 for the first time, The Master Chief Collection is the definitive Halo gaming ex 
+Generos (criptografado): (descriptografado):
+Action 
+AppID: (descriptografado):
+76
+Name (criptografado): (descriptografado):
+Z1 Battle Royale 
+Release (criptografado): (descriptografado):
+28/02/2018 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+0.0 
+Descricao (criptografado): (descriptografado):
+Z1 Battle Royale is a Free to Play, fast-paced, action arcade, competitive Battle Royale. Staying true to its 'King of the Kill' roots, the game has been revamped and restored to the classic feel, look, and gameplay everyone fell in love with. Play s 
+Generos (criptografado): (descriptografado):
+ActionAdventureFree to PlayMassively Multiplayer 
+AppID: (descriptografado):
+77
+Name (criptografado): (descriptografado):
+SekiroC: Shadows Die Twice - GOTY Edition 
+Release (criptografado): (descriptografado):
+21/03/2019 
+Required (criptografado): (descriptografado):
+17 
+Price (criptografado): (descriptografado):
+59.99 
+Descricao (criptografado): (descriptografado):
+Game of the Year - The Game Awards 2019 Best Action Game of 2019 - IGN Carve your own clever path to vengeance in the award winning adventure from developer FromSoftware, creators of Bloodborne and the Dark Souls series. Take Revenge. Restore Your Ho 
+Generos (criptografado): (descriptografado):
+ActionAdventure 
+AppID: (descriptografado):
+78
+Name (criptografado): (descriptografado):
+BattlefieldC 2042 
+Release (criptografado): (descriptografado):
+19/11/2021 
+Required (criptografado): (descriptografado):
+17 
+Price (criptografado): (descriptografado):
+59.99 
+Descricao (criptografado): (descriptografado):
+It°s all or nothing in Season 7: Turning Point. BattlefieldC 2042 is a first-person shooter that marks the return to the iconic all-out warfare of the franchise. 
+Generos (criptografado): (descriptografado):
+ActionAdventureCasual 
+AppID: (descriptografado):
+79
+Name (criptografado): (descriptografado):
+Forza Horizon 4 
+Release (criptografado): (descriptografado):
+09/03/2021 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+59.99 
+Descricao (criptografado): (descriptografado):
+Dynamic seasons change everything at the world°s greatest automotive festival. Go it alone or team up with others to explore beautiful and historic Britain in a shared open world. 
+Generos (criptografado): (descriptografado):
+Racing 
+AppID: (descriptografado):
+80
+Name (criptografado): (descriptografado):
+Undertale 
+Release (criptografado): (descriptografado):
+15/09/2015 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+9.99 
+Descricao (criptografado): (descriptografado):
+UNDERTALE! The RPG game where you don't have to destroy anyone. 
+Generos (criptografado): (descriptografado):
+IndieRPG 
+AppID: (descriptografado):
+81
+Name (criptografado): (descriptografado):
+Dinosaur Island Playtest 
+Release (criptografado): (descriptografado):
+29/04/2021 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+0.0 
+Descricao (criptografado): (descriptografado):
+nan 
+Generos (criptografado): (descriptografado):
+AppID: (descriptografado):
+82
+Name (criptografado): (descriptografado):
+Rift Playtest 
+Release (criptografado): (descriptografado):
+21/03/2024 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+0.0 
+Descricao (criptografado): (descriptografado):
+nan 
+Generos (criptografado): (descriptografado):
+AppID: (descriptografado):
+83
+Name (criptografado): (descriptografado):
+TEST Playtest 
+Release (criptografado): (descriptografado):
+13/06/2022 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+0.0 
+Descricao (criptografado): (descriptografado):
+nan 
+Generos (criptografado): (descriptografado):
+AppID: (descriptografado):
+84
+Name (criptografado): (descriptografado):
+BlockGame Playtest 
+Release (criptografado): (descriptografado):
+09/07/2023 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+0.0 
+Descricao (criptografado): (descriptografado):
+nan 
+Generos (criptografado): (descriptografado):
+AppID: (descriptografado):
+85
+Name (criptografado): (descriptografado):
+Uncapped Games Alpha Playtest 
+Release (criptografado): (descriptografado):
+14/03/2024 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+0.0 
+Descricao (criptografado): (descriptografado):
+nan 
+Generos (criptografado): (descriptografado):
+AppID: (descriptografado):
+86
+Name (criptografado): (descriptografado):
+Chess Ultimate Playtest 
+Release (criptografado): (descriptografado):
+20/09/2023 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+0.0 
+Descricao (criptografado): (descriptografado):
+nan 
+Generos (criptografado): (descriptografado):
+AppID: (descriptografado):
+87
+Name (criptografado): (descriptografado):
+Project Velos Playtest 
+Release (criptografado): (descriptografado):
+21/11/2023 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+0.0 
+Descricao (criptografado): (descriptografado):
+nan 
+Generos (criptografado): (descriptografado):
+AppID: (descriptografado):
+88
+Name (criptografado): (descriptografado):
+Sunland Hike 
+Release (criptografado): (descriptografado):
+25/09/2023 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+1.99 
+Descricao (criptografado): (descriptografado):
+Unveil the tranquility of nature in this captivating walking simulator. Immerse yourself in the picturesque landscapes of Sunland, where every step leads to a new discovery. Your ultimate goal? Find hidden gems scattered throughout the terrain, each 
+Generos (criptografado): (descriptografado):
+AdventureCasualIndie 
+AppID: (descriptografado):
+89
+Name (criptografado): (descriptografado):
+Emerald Cove Playtest 
+Release (criptografado): (descriptografado):
+20/02/2024 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+0.0 
+Descricao (criptografado): (descriptografado):
+nan 
+Generos (criptografado): (descriptografado):
+AppID: (descriptografado):
+90
+Name (criptografado): (descriptografado):
+Galactic Annihilation Playtest 
+Release (criptografado): (descriptografado):
+25/04/2024 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+0.0 
+Descricao (criptografado): (descriptografado):
+nan 
+Generos (criptografado): (descriptografado):
+AppID: (descriptografado):
+91
+Name (criptografado): (descriptografado):
+Lost Dream: Memories 
+Release (criptografado): (descriptografado):
+08/07/2022 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+3.99 
+Descricao (criptografado): (descriptografado):
+Lost Dream Is back bigger than ever! Explore the world as a cute little fox and go on a mission to find your forgotten piece. 
+Generos (criptografado): (descriptografado):
+AdventureCasualIndie 
+AppID: (descriptografado):
+92
+Name (criptografado): (descriptografado):
+Eight Dragons 2 Playtest 
+Release (criptografado): (descriptografado):
+17/05/2023 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+0.0 
+Descricao (criptografado): (descriptografado):
+nan 
+Generos (criptografado): (descriptografado):
+AppID: (descriptografado):
+93
+Name (criptografado): (descriptografado):
+Offlands Playtest 
+Release (criptografado): (descriptografado):
+12/10/2021 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+0.0 
+Descricao (criptografado): (descriptografado):
+nan 
+Generos (criptografado): (descriptografado):
+AppID: (descriptografado):
+94
+Name (criptografado): (descriptografado):
+Slam Dad and the Brotherhood of Fathers Playtest 
+Release (criptografado): (descriptografado):
+22/10/2023 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+0.0 
+Descricao (criptografado): (descriptografado):
+nan 
+Generos (criptografado): (descriptografado):
+AppID: (descriptografado):
+95
+Name (criptografado): (descriptografado):
+Cozy Trip 
+Release (criptografado): (descriptografado):
+13/09/2023 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+1.99 
+Descricao (criptografado): (descriptografado):
+Embark on a Cozy Trip like no other! Immerse yourself in the joy of exploration, tranquility, and discovery. Unwind and relax as you navigate the town and its enchanting forest, uncovering hidden treasures along the way. Experience the magic today! 
+Generos (criptografado): (descriptografado):
+AdventureCasualIndie 
+AppID: (descriptografado):
+96
+Name (criptografado): (descriptografado):
+Banded Playtest 
+Release (criptografado): (descriptografado):
+08/02/2024 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+0.0 
+Descricao (criptografado): (descriptografado):
+nan 
+Generos (criptografado): (descriptografado):
+AppID: (descriptografado):
+97
+Name (criptografado): (descriptografado):
+Total War: Elysium Playtest 
+Release (criptografado): (descriptografado):
+24/07/2020 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+0.0 
+Descricao (criptografado): (descriptografado):
+nan 
+Generos (criptografado): (descriptografado):
+AppID: (descriptografado):
+98
+Name (criptografado): (descriptografado):
+Ascent of Bot Playtest 
+Release (criptografado): (descriptografado):
+14/09/2022 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+0.0 
+Descricao (criptografado): (descriptografado):
+nan 
+Generos (criptografado): (descriptografado):
+AppID: (descriptografado):
+99
+Name (criptografado): (descriptografado):
+WHIST CLUB Playtest 
+Release (criptografado): (descriptografado):
+08/01/2023 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+0.0 
+Descricao (criptografado): (descriptografado):
+nan 
+Generos (criptografado): (descriptografado):
+AppID: (descriptografado):
+100
+Name (criptografado): (descriptografado):
+Hardivlanders Playtest 
+Release (criptografado): (descriptografado):
+10/03/2022 
+Required (criptografado): (descriptografado):
+0 
+Price (criptografado): (descriptografado):
+0.0 
+Descricao (criptografado): (descriptografado):
+nan 
+Generos (criptografado): (descriptografado):

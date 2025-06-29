@@ -5,11 +5,11 @@ import java.util.List;
 
 public class KMP {
     /**
-            * Calcula a tabela de prefixo (lps) para o padrão em bytes.
-            *
-            * @param pattern O padrão em bytes.
-     * @return A tabela lps.
-     */
+    * Calcula a tabela de prefixo (lps) para o padrão em bytes.
+    *
+    * @param pattern O padrão em bytes.
+    * @return A tabela lps.
+    */
     private static int[] computeLPSArray(byte[] pattern) {
         int m = pattern.length;
         int[] lps = new int[m];

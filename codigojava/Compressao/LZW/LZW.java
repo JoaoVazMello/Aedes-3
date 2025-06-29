@@ -14,11 +14,7 @@ package codigojava.Compressao.LZW;
  * PUC Minas
  */
 
-import codigojava.Compressao.VetorDeBits;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.util.*;
 
 public class LZW {

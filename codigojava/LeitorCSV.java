@@ -21,9 +21,9 @@ public class LeitorCSV {
   }
 
   public LeitorCSV() {
-    path = "C:\\Users\\joaoe\\OneDrive\\Desktop\\TpAedes\\BaseDeDados/BaseDeDados.csv";
+    path = "C:\\Users\\joaoe\\OneDrive\\Desktop\\Faculdade\\TpAedes\\BaseDeDados/BaseDeDados.csv";
 
-    path = "/Users/pedrofelix/Aedes-3/BaseDeDados/BaseDeDados.csv";
+    //path = "/Users/pedrofelix/Aedes-3/BaseDeDados/BaseDeDados.csv";
   }
 
   // Metodo para trabalhar a lista do CSV
