@@ -4,6 +4,7 @@ import codigojava.CasamentoDePadraes.BoyerMoore;
 import codigojava.CasamentoDePadraes.KMP;
 import codigojava.Compressao.LZW.LZW;
 import codigojava.Criptografia.RSA;
+import codigojava.Criptografia.VigenereBytes;
 import codigojava.HASH.CrudHash;
 import codigojava.Huffman.CompressaoGames;
 import codigojava.ListaInvertida.ListaArquivo;
@@ -26,12 +27,14 @@ public class Main {
         ListaArquivo listainvertida = new ListaArquivo();
         String nomeArquivoCompactado = crud.nomeArquivo + "LZWCompressao" + ".bd";
         RSA criptografar = new RSA();
+        String arquivoVigenere = crud.nomeArquivo + "Vigenere" + ".bd";
         criptografar.salvarChavesTexto("minhaChave");
+        String chave = "criptografar";
 
         int opcao = 0;
 
         // Laço de repetiçao para o menu
-        while (opcao != 14) {
+        while (opcao != 16) {
 
             // Opçoes de menu para realizar as operaçoes do crud
             System.out.println("======================== Sistema de CRUD - Aedes3 ========================");
@@ -49,7 +52,9 @@ public class Main {
             System.out.println(" 11 - Busca por BoyerMoore");
             System.out.println(" 12 - Criptografia RSA");
             System.out.println(" 13 - Descriptografia RSA");
-            System.out.println(" 14 - Sair ");
+            System.out.println(" 14 - Criptografia Vigenere");
+            System.out.println(" 15 - Descriptografia Vigenere");
+            System.out.println(" 16 - Sair ");
             System.out.println("==========================================================================");
 
             // Leitura do valor
@@ -71,7 +76,7 @@ public class Main {
                     crud.create(ListaDeGames);
 
                     // Criar o arquivo da lista
-//                    listainvertida.LerBaseComHash();
+                    // listainvertida.LerBaseComHash();
 
                     break;
 
@@ -158,8 +163,10 @@ public class Main {
                         }
                     } while (opcao == 4);
 
-                    if (gameResult != null) MostraAtributos(gameResult);
-                    else System.out.println("Game com ID " + idGame + " não encontrado.");
+                    if (gameResult != null)
+                        MostraAtributos(gameResult);
+                    else
+                        System.out.println("Game com ID " + idGame + " não encontrado.");
                     break;
 
                 // Opçao 3 = Atualizar um registro
@@ -214,7 +221,8 @@ public class Main {
                         }
 
                         // Cria o objeto Game com os dados recebidos
-                        Game gameUpdate = new Game(resultGame.getId(), nameGame, releaseGame, requiredGame, priceGame, descriptionGame, generesGame);
+                        Game gameUpdate = new Game(resultGame.getId(), nameGame, releaseGame, requiredGame, priceGame,
+                                descriptionGame, generesGame);
 
                         crud.update(gameUpdate);
                     } else {
@@ -231,7 +239,8 @@ public class Main {
                     var resultado = crud.delete(idDelete);
                     if (resultado) {
                         System.out.println("Game com ID " + idDelete + " deletado com sucesso.");
-                    } else System.out.println("Game com ID " + idDelete + " não encontrado.");
+                    } else
+                        System.out.println("Game com ID " + idDelete + " não encontrado.");
                     break;
 
                 // Opçao 5 = Busca por texto
@@ -290,7 +299,7 @@ public class Main {
                 case 8:
 
                     CompressaoGames compressaoGames = new CompressaoGames();
-                    
+
                     compressaoGames.RodarCompressao();
 
                     break;
@@ -303,13 +312,13 @@ public class Main {
                     byte[] msgBytes = Files.readAllBytes(Paths.get(crud.nomeArquivo));
                     resultadoKMP = KMP.search(msgBytes, palavra.getBytes());
 
-
                     if (resultadoKMP.isEmpty()) {
                         System.out.println("Padrão não encontrado.");
                     } else {
                         System.out.println("Padrão encontrado nos índices: " + resultadoKMP);
                         for (int index : resultadoKMP) {
-                            System.out.println("Ocorrência em " + index + ": " + new String(msgBytes, index, palavra.getBytes().length));
+                            System.out.println("Ocorrência em " + index + ": "
+                                    + new String(msgBytes, index, palavra.getBytes().length));
                         }
                     }
 
@@ -323,13 +332,13 @@ public class Main {
                     byte[] msgBytesBoyer = Files.readAllBytes(Paths.get(crud.nomeArquivo));
                     resultadoBoyer = BoyerMoore.search(msgBytesBoyer, pattern.getBytes());
 
-
                     if (resultadoBoyer.isEmpty()) {
                         System.out.println("Padrão não encontrado.");
                     } else {
                         System.out.println("Padrão encontrado nos índices: " + resultadoBoyer);
                         for (int index : resultadoBoyer) {
-                            System.out.println("Ocorrência em " + index + ": " + new String(msgBytesBoyer, index, pattern.getBytes().length));
+                            System.out.println("Ocorrência em " + index + ": "
+                                    + new String(msgBytesBoyer, index, pattern.getBytes().length));
                         }
                     }
                     break;
@@ -341,7 +350,7 @@ public class Main {
 
                     break;
                 case 13:
-                    
+
                     System.out.println("Descriptografando... ");
 
                     criptografar.descriptografarBase();
@@ -349,14 +358,35 @@ public class Main {
                     break;
 
                 case 14:
+                    try {
+                        byte[] bytesArquivo = Files.readAllBytes(Paths.get(crud.nomeArquivo));
+                        byte[] cripto = VigenereBytes.encrypt(bytesArquivo, chave);
+
+                        try (OutputStream out = new FileOutputStream(arquivoVigenere)) {
+                            out.write(cripto);
+                        }
+
+                        System.out.println("Arquivo criptografado com sucesso!");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+
+                case 15:
+                    byte[] conteudoCriptografado = Files.readAllBytes(Paths.get(arquivoVigenere));
+                    byte[] originalBytes = VigenereBytes.decrypt(conteudoCriptografado, chave);
+                    Files.write(Paths.get(crud.nomeArquivo), originalBytes);
+                    break;
+
+                case 16:
 
                     System.out.println("\n");
                     System.out.println("=====================================");
                     System.out.println("=  Obrigado por utilizar o sistema  =");
                     System.out.println("=====================================");
                     System.out.println("\n");
-                    opcao = 15;
-                
+                    opcao = 16;
+
                     break;
 
                 // Opçao invalida
